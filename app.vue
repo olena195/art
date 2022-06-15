@@ -1,5 +1,5 @@
 <template>
   <div>
-    njhkjnj
+    huugouggyu
   </div>
 </template>
