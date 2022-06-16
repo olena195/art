@@ -10,13 +10,24 @@ collections:
   - name: "tag" # Used in routes, e.g., /admin/collections/blog
     label: "теги" # Used in the UI
     folder: "content/tags" # The path to the folder where the documents are stored
+    extension: "json"
+    format: "json"
     create: true # Allow users to create new documents in this collection
     slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
     fields: # The fields for each document, usually in front matter
       - {label: "назва тега", name: "title", widget: "string"}
+
+  - name: "fandom" # Used in routes, e.g., /admin/collections/blog
+    label: "фандом" # Used in the UI
+    folder: "content/fandom" # The path to the folder where the documents are stored
+    extension: "json"
+    format: "json"
+    create: true # Allow users to create new documents in this collection
+    slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in front matter
+      - {label: "назва фандома", name: "fandom", widget: "string"}
       
-     
-   
+      
   - name: "arts" # Used in routes, e.g., /admin/collections/blog
     label: "малюнки" # Used in the UI
     folder: "content/arts" # The path to the folder where the documents are stored
@@ -24,10 +35,10 @@ collections:
     slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
     fields: # The fields for each document, usually in front matter
       - {label: "Назва", name: "title", widget: "string"}
-      - {label: "Фандом", name: "fandom", widget: "string"}
-      - {label: "Пейрінг", name: "paring", widget: "string"}
+      - {label: "Фандом", name: "fandom", widget: "relation", collection: "fandom", value_field: "title", search_fields: ["title"], multiple: true}
+      - {label: "Пейрінг", name: "paring", widget: "relation", collection: "paring", value_field: "title", search_fields: ["title"], multiple: true}
       - {label: "Розмір", name: "size", widget: "string"}
-      - {label: "Теги", name: "tag", widget: "relation", collection: "tag", value_field: "title", search_fields: ["title"]}
+      - {label: "Теги", name: "tag", widget: "relation", collection: "tag", value_field: "title", search_fields: ["title"], multiple: true}
       - {label: "Короткий опис", name: "description", widget: "string"}
       - {label: "Арт", name: "art", widget: "image"}
    
