@@ -50,7 +50,6 @@ collections:
       - {label: "Фандом", name: "fandom", widget: "relation", collection: "fandom", value_field: "title", search_fields: ["title"], multiple: true}
       - {label: "Пейрінг", name: "paring", widget: "relation", collection: "paring", value_field: "title", search_fields: ["title"], multiple: true}
       - {label: "Теги", name: "tag", widget: "relation", collection: "tag", value_field: "title", search_fields: ["title"], multiple: true}
-      - {label: "Короткий опис", name: "description", widget: "string"}
       - {label: "Арт", name: "art", widget: "image", allow_multiple: false}
    
   - name: "fanfics" 
