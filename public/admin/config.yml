@@ -36,7 +36,7 @@ collections:
     create: true 
     slug: "{{slug}}" 
     fields: 
-      - {label: "назва фандома", name: "fandom", widget: "string"}
+      - {label: "назва фандома", name: "title", widget: "string"}
       
       
   - name: "arts" 
