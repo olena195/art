@@ -5,6 +5,7 @@ backend:
 locale: uk
 media_folder: public/images/uploads
 public_folder: "/images/uploads"
+publish_mode: editorial_workflow
 
 collections:
   - name: "paring" # Used in routes, e.g., /admin/collections/blog
@@ -70,6 +71,8 @@ collections:
   - name: "comics" # Used in routes, e.g., /admin/collections/blog
     label: "комікси" # Used in the UI
     folder: "content/comics" # The path to the folder where the documents are stored
+    extension: "json"
+    format: "json"
     create: true # Allow users to create new documents in this collection
     slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
     fields: # The fields for each document, usually in front matter
@@ -78,11 +81,14 @@ collections:
       - {label: "Пейрінг", name: "paring", widget: "relation", collection: "paring", value_field: "title", search_fields: ["title"], multiple: true}
       - {label: "Теги", name: "tag", widget: "relation", collection: "tag", value_field: "title", search_fields: ["title"], multiple: true}
       - {label: "Короткий опис", name: "description", widget: "string"}
-      - {label: "Комікс", name: "comics", widget: "image", media_library: {config: {multiple: true}}}
+      - {label: "Комікс", name: "comics", widget: "list", field: {label: Image, name: image, widget: image}}
+
 
   - name: "novels" # Used in routes, e.g., /admin/collections/blog
     label: "новели" # Used in the UI
     folder: "content/novels" # The path to the folder where the documents are stored
+    extension: "json"
+    format: "json"
     create: true # Allow users to create new documents in this collection
     slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
     fields: # The fields for each document, usually in front matter
