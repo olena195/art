@@ -8,45 +8,45 @@ public_folder: "/images/uploads"
 publish_mode: editorial_workflow
 
 collections:
-  - name: "paring" # Used in routes, e.g., /admin/collections/blog
-    label: "пейрінг" # Used in the UI
-    folder: "content/paring" # The path to the folder where the documents are stored
+  - name: "paring" 
+    label: "пейрінг" 
+    folder: "content/paring" 
     extension: "json"
     format: "json"
-    create: true # Allow users to create new documents in this collection
-    slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
-    fields: # The fields for each document, usually in front matter
+    create: true 
+    slug: "{{slug}}" 
+    fields: 
       - {label: "назва пейрінга", name: "title", widget: "string"}
 
-  - name: "tag" # Used in routes, e.g., /admin/collections/blog
-    label: "теги" # Used in the UI
-    folder: "content/tags" # The path to the folder where the documents are stored
+  - name: "tag" 
+    label: "теги" 
+    folder: "content/tags" 
     extension: "json"
     format: "json"
-    create: true # Allow users to create new documents in this collection
-    slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
-    fields: # The fields for each document, usually in front matter
+    create: true 
+    slug: "{{slug}}" 
+    fields: 
       - {label: "назва тега", name: "title", widget: "string"}
 
-  - name: "fandom" # Used in routes, e.g., /admin/collections/blog
-    label: "фандом" # Used in the UI
-    folder: "content/fandom" # The path to the folder where the documents are stored
+  - name: "fandom" 
+    label: "фандом" 
+    folder: "content/fandom" 
     extension: "json"
     format: "json"
-    create: true # Allow users to create new documents in this collection
-    slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
-    fields: # The fields for each document, usually in front matter
+    create: true 
+    slug: "{{slug}}" 
+    fields: 
       - {label: "назва фандома", name: "fandom", widget: "string"}
       
       
-  - name: "arts" # Used in routes, e.g., /admin/collections/blog
-    label: "малюнки" # Used in the UI
-    folder: "content/arts" # The path to the folder where the documents are stored
+  - name: "arts" 
+    label: "малюнки" 
+    folder: "content/arts" 
     extension: "json"
     format: "json"
-    create: true # Allow users to create new documents in this collection
-    slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
-    fields: # The fields for each document, usually in front matter
+    create: true 
+    slug: "{{slug}}" 
+    fields: 
       - {label: "Назва", name: "title", widget: "string"}
       - {label: "Фандом", name: "fandom", widget: "relation", collection: "fandom", value_field: "title", search_fields: ["title"], multiple: true}
       - {label: "Пейрінг", name: "paring", widget: "relation", collection: "paring", value_field: "title", search_fields: ["title"], multiple: true}
@@ -54,12 +54,12 @@ collections:
       - {label: "Короткий опис", name: "description", widget: "string"}
       - {label: "Арт", name: "art", widget: "image", allow_multiple: false}
    
-  - name: "fanfics" # Used in routes, e.g., /admin/collections/blog
-    label: "фанфіки" # Used in the UI
-    folder: "content/fanfics" # The path to the folder where the documents are stored
-    create: true # Allow users to create new documents in this collection
-    slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
-    fields: # The fields for each document, usually in front matter
+  - name: "fanfics" 
+    label: "фанфіки" 
+    folder: "content/fanfics" 
+    create: true 
+    slug: "{{slug}}" 
+    fields: 
       - {label: "Назва", name: "title", widget: "string"}
       - {label: "Фандом", name: "fandom", widget: "relation", collection: "fandom", value_field: "title", search_fields: ["title"], multiple: true}
       - {label: "Пейрінг", name: "paring", widget: "relation", collection: "paring", value_field: "title", search_fields: ["title"], multiple: true}
@@ -68,14 +68,14 @@ collections:
       - {label: "Короткий опис", name: "description", widget: "string"}
       - {label: "Текст", name: "body", widget: "markdown"}
 
-  - name: "comics" # Used in routes, e.g., /admin/collections/blog
-    label: "комікси" # Used in the UI
-    folder: "content/comics" # The path to the folder where the documents are stored
+  - name: "comics" 
+    label: "комікси" 
+    folder: "content/comics" 
     extension: "json"
     format: "json"
-    create: true # Allow users to create new documents in this collection
-    slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
-    fields: # The fields for each document, usually in front matter
+    create: true 
+    slug: "{{slug}}" 
+    fields: 
       - {label: "Назва", name: "title", widget: "string"}
       - {label: "Фандом", name: "fandom", widget: "relation", collection: "fandom", value_field: "title", search_fields: ["title"], multiple: true}
       - {label: "Пейрінг", name: "paring", widget: "relation", collection: "paring", value_field: "title", search_fields: ["title"], multiple: true}
@@ -84,14 +84,14 @@ collections:
       - {label: "Комікс", name: "comics", widget: "list", field: {label: Image, name: image, widget: image}}
 
 
-  - name: "novels" # Used in routes, e.g., /admin/collections/blog
-    label: "новели" # Used in the UI
-    folder: "content/novels" # The path to the folder where the documents are stored
+  - name: "novels" 
+    label: "новели" 
+    folder: "content/novels" 
     extension: "json"
     format: "json"
-    create: true # Allow users to create new documents in this collection
-    slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
-    fields: # The fields for each document, usually in front matter
+    create: true 
+    slug: "{{slug}}" 
+    fields: 
       - {label: "Назва", name: "title", widget: "string"}
       - {label: "Фандом", name: "fandom", widget: "relation", collection: "fandom", value_field: "title", search_fields: ["title"], multiple: true}
       - {label: "Пейрінг", name: "paring", widget: "relation", collection: "paring", value_field: "title", search_fields: ["title"], multiple: true}
