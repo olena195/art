@@ -49,8 +49,46 @@ collections:
       - {label: "Назва", name: "title", widget: "string"}
       - {label: "Фандом", name: "fandom", widget: "relation", collection: "fandom", value_field: "title", search_fields: ["title"], multiple: true}
       - {label: "Пейрінг", name: "paring", widget: "relation", collection: "paring", value_field: "title", search_fields: ["title"], multiple: true}
+      - {label: "Теги", name: "tag", widget: "relation", collection: "tag", value_field: "title", search_fields: ["title"], multiple: true}
+      - {label: "Короткий опис", name: "description", widget: "string"}
+      - {label: "Арт", name: "art", widget: "image", allow_multiple: false}
+   
+  - name: "fanfics" # Used in routes, e.g., /admin/collections/blog
+    label: "фанфіки" # Used in the UI
+    folder: "content/fanfics" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in front matter
+      - {label: "Назва", name: "title", widget: "string"}
+      - {label: "Фандом", name: "fandom", widget: "relation", collection: "fandom", value_field: "title", search_fields: ["title"], multiple: true}
+      - {label: "Пейрінг", name: "paring", widget: "relation", collection: "paring", value_field: "title", search_fields: ["title"], multiple: true}
       - {label: "Розмір", name: "size", widget: "string"}
       - {label: "Теги", name: "tag", widget: "relation", collection: "tag", value_field: "title", search_fields: ["title"], multiple: true}
       - {label: "Короткий опис", name: "description", widget: "string"}
-      - {label: "Арт", name: "art", widget: "image"}
-   
+      - {label: "Текст", name: "body", widget: "markdown"}
+
+  - name: "comics" # Used in routes, e.g., /admin/collections/blog
+    label: "комікси" # Used in the UI
+    folder: "content/comics" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in front matter
+      - {label: "Назва", name: "title", widget: "string"}
+      - {label: "Фандом", name: "fandom", widget: "relation", collection: "fandom", value_field: "title", search_fields: ["title"], multiple: true}
+      - {label: "Пейрінг", name: "paring", widget: "relation", collection: "paring", value_field: "title", search_fields: ["title"], multiple: true}
+      - {label: "Теги", name: "tag", widget: "relation", collection: "tag", value_field: "title", search_fields: ["title"], multiple: true}
+      - {label: "Короткий опис", name: "description", widget: "string"}
+      - {label: "Комікс", name: "comics", widget: "image", media_library: {config: {multiple: true}}}
+
+  - name: "novels" # Used in routes, e.g., /admin/collections/blog
+    label: "новели" # Used in the UI
+    folder: "content/novels" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in front matter
+      - {label: "Назва", name: "title", widget: "string"}
+      - {label: "Фандом", name: "fandom", widget: "relation", collection: "fandom", value_field: "title", search_fields: ["title"], multiple: true}
+      - {label: "Пейрінг", name: "paring", widget: "relation", collection: "paring", value_field: "title", search_fields: ["title"], multiple: true}
+      - {label: "Теги", name: "tag", widget: "relation", collection: "tag", value_field: "title", search_fields: ["title"], multiple: true}
+      - {label: "Короткий опис", name: "description", widget: "string"}
+      - {label: "Новела", name: "novels", widget: "file"}
