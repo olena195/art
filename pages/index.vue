@@ -1,8 +1,12 @@
 <script setup lang="ts">
+import {ElButton} from "element-plus";
 </script>
 
 <template>
   <main>
+    <ElButton>
+      Кнопка
+    </ElButton>
     <ul>
       <ContentNavigation v-slot="{ navigation }">
         <li v-for="nav of navigation">
