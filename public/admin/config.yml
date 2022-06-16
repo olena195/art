@@ -7,14 +7,27 @@ media_folder: public/images/uploads
 public_folder: "/images/uploads"
 
 collections:
+  - name: "tag" # Used in routes, e.g., /admin/collections/blog
+    label: "теги" # Used in the UI
+    folder: "content/tags" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in front matter
+      - {label: "назва тега", name: "title", widget: "string"}
+      
+     
+   
   - name: "arts" # Used in routes, e.g., /admin/collections/blog
     label: "малюнки" # Used in the UI
     folder: "content/arts" # The path to the folder where the documents are stored
     create: true # Allow users to create new documents in this collection
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
     fields: # The fields for each document, usually in front matter
-      - {label: "Заголовок", name: "title", widget: "string"}
-      - {label: "Publish Date", name: "date", widget: "datetime"}
-      - {label: "Featured Image", name: "thumbnail", widget: "image"}
-      - {label: "Rating (scale of 1-5)", name: "rating", widget: "number"}
-      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Назва", name: "title", widget: "string"}
+      - {label: "Фандом", name: "fandom", widget: "string"}
+      - {label: "Пейрінг", name: "paring", widget: "string"}
+      - {label: "Розмір", name: "size", widget: "string"}
+      - {label: "Теги", name: "tag", widget: "relation", collection: "tag", value_field: "title", search_fields: ["title"]}
+      - {label: "Короткий опис", name: "description", widget: "string"}
+      - {label: "Арт", name: "art", widget: "image"}
+   
