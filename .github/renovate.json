@@ -1,0 +1,18 @@
+{
+  "extends": [
+    "config:base",
+    "group:allNonMajor",
+    ":semanticCommits",
+    ":automergeTypes",
+    ":disableDependencyDashboard",
+    ":pinVersions",
+    ":semanticCommitType(deps)",
+    ":onlyNpm",
+    ":label(dependencies)",
+    "schedule:weekly"
+  ],
+  "baseBranches": [
+    "main"
+  ],
+  "bumpVersion": "patch"
+}
