@@ -1,5 +1,9 @@
+<script setup lang="ts"></script>
+
 <template>
-  <main class="prose">
-    <ContentDoc />
+  <main>
+    <ContentDoc>
+    </ContentDoc>
+
   </main>
 </template>
