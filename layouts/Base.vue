@@ -41,7 +41,7 @@ main {
   background: white;
 }
 
-main >>> img {
+main :deep(img) {
   max-width: 100%;
   height: auto;
 }
