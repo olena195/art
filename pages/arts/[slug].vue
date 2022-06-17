@@ -1,7 +1,7 @@
 <template>
   <main class="prose">
-    <ContentDoc v-slot="{doc}" >
-      <img :src="doc.art" :alt="doc.title">
+    <ContentDoc v-slot="{doc}">
+      <img :alt="doc.title" :src="doc.art">
     </ContentDoc>
   </main>
 </template>

@@ -1,11 +1,11 @@
-<script setup lang="ts"></script>
+<script lang="ts" setup></script>
 
 <template>
   <main>
-    <ContentList path="/arts" v-slot="{ list }" tag="ul">
+    <ContentList v-slot="{ list }" path="/arts" tag="ul">
       <li v-for="art in list" :key="art._path">
         <nuxt-link :to="art._path">
-          <img :src="art.art" :alt="art.title">
+          <img :alt="art.title" :src="art.art">
         </nuxt-link>
       </li>
     </ContentList>

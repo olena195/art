@@ -15,7 +15,7 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      - {label: "назва пейрінга", name: "title", widget: "string"}
+      - { label: "назва пейрінга", name: "title", widget: "string" }
 
   - name: "tag"
     label: "теги"
@@ -25,7 +25,7 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      - {label: "назва тега", name: "title", widget: "string"}
+      - { label: "назва тега", name: "title", widget: "string" }
 
   - name: "fandom"
     label: "фандом"
@@ -35,7 +35,7 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      - {label: "назва фандома", name: "title", widget: "string"}
+      - { label: "назва фандома", name: "title", widget: "string" }
 
 
   - name: "arts"
@@ -46,11 +46,11 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      - {label: "Назва", name: "title", widget: "string"}
-      - {label: "Фандом", name: "fandom", widget: "relation", collection: "fandom", value_field: "title", search_fields: ["title"], multiple: true}
-      - {label: "Пейрінг", name: "pairing", widget: "relation", collection: "pairing", value_field: "title", search_fields: ["title"], multiple: true}
-      - {label: "Теги", name: "tag", widget: "relation", collection: "tag", value_field: "title", search_fields: ["title"], multiple: true}
-      - {label: "Арт", name: "art", widget: "image", allow_multiple: false}
+      - { label: "Назва", name: "title", widget: "string" }
+      - { label: "Фандом", name: "fandom", widget: "relation", collection: "fandom", value_field: "title", search_fields: [ "title" ], multiple: true }
+      - { label: "Пейрінг", name: "pairing", widget: "relation", collection: "pairing", value_field: "title", search_fields: [ "title" ], multiple: true }
+      - { label: "Теги", name: "tag", widget: "relation", collection: "tag", value_field: "title", search_fields: [ "title" ], multiple: true }
+      - { label: "Арт", name: "art", widget: "image", allow_multiple: false }
 
   - name: "fanfics"
     label: "фанфіки"
@@ -58,13 +58,13 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      - {label: "Назва", name: "title", widget: "string"}
-      - {label: "Фандом", name: "fandom", widget: "relation", collection: "fandom", value_field: "title", search_fields: ["title"], multiple: true}
-      - {label: "Пейрінг", name: "pairing", widget: "relation", collection: "pairing", value_field: "title", search_fields: ["title"], multiple: true}
-      - {label: "Розмір", name: "size", widget: "string"}
-      - {label: "Теги", name: "tag", widget: "relation", collection: "tag", value_field: "title", search_fields: ["title"], multiple: true}
-      - {label: "Короткий опис", name: "description", widget: "string"}
-      - {label: "Текст", name: "body", widget: "markdown"}
+      - { label: "Назва", name: "title", widget: "string" }
+      - { label: "Фандом", name: "fandom", widget: "relation", collection: "fandom", value_field: "title", search_fields: [ "title" ], multiple: true }
+      - { label: "Пейрінг", name: "pairing", widget: "relation", collection: "pairing", value_field: "title", search_fields: [ "title" ], multiple: true }
+      - { label: "Розмір", name: "size", widget: "string" }
+      - { label: "Теги", name: "tag", widget: "relation", collection: "tag", value_field: "title", search_fields: [ "title" ], multiple: true }
+      - { label: "Короткий опис", name: "description", widget: "string" }
+      - { label: "Текст", name: "body", widget: "markdown" }
 
   - name: "comics"
     label: "комікси"
@@ -74,12 +74,12 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      - {label: "Назва", name: "title", widget: "string"}
-      - {label: "Фандом", name: "fandom", widget: "relation", collection: "fandom", value_field: "title", search_fields: ["title"], multiple: true}
-      - {label: "Пейрінг", name: "pairing", widget: "relation", collection: "pairing", value_field: "title", search_fields: ["title"], multiple: true}
-      - {label: "Теги", name: "tag", widget: "relation", collection: "tag", value_field: "title", search_fields: ["title"], multiple: true}
-      - {label: "Короткий опис", name: "description", widget: "string"}
-      - {label: "Комікс", name: "comics", widget: "list", field: {label: Image, name: image, widget: image}}
+      - { label: "Назва", name: "title", widget: "string" }
+      - { label: "Фандом", name: "fandom", widget: "relation", collection: "fandom", value_field: "title", search_fields: [ "title" ], multiple: true }
+      - { label: "Пейрінг", name: "pairing", widget: "relation", collection: "pairing", value_field: "title", search_fields: [ "title" ], multiple: true }
+      - { label: "Теги", name: "tag", widget: "relation", collection: "tag", value_field: "title", search_fields: [ "title" ], multiple: true }
+      - { label: "Короткий опис", name: "description", widget: "string" }
+      - { label: "Комікс", name: "comics", widget: "list", field: { label: Image, name: image, widget: image } }
 
 
   - name: "novels"
@@ -90,9 +90,9 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      - {label: "Назва", name: "title", widget: "string"}
-      - {label: "Фандом", name: "fandom", widget: "relation", collection: "fandom", value_field: "title", search_fields: ["title"], multiple: true}
-      - {label: "Пейрінг", name: "pairing", widget: "relation", collection: "pairing", value_field: "title", search_fields: ["title"], multiple: true}
-      - {label: "Теги", name: "tag", widget: "relation", collection: "tag", value_field: "title", search_fields: ["title"], multiple: true}
-      - {label: "Короткий опис", name: "description", widget: "string"}
-      - {label: "Новела", name: "novels", widget: "file"}
+      - { label: "Назва", name: "title", widget: "string" }
+      - { label: "Фандом", name: "fandom", widget: "relation", collection: "fandom", value_field: "title", search_fields: [ "title" ], multiple: true }
+      - { label: "Пейрінг", name: "pairing", widget: "relation", collection: "pairing", value_field: "title", search_fields: [ "title" ], multiple: true }
+      - { label: "Теги", name: "tag", widget: "relation", collection: "tag", value_field: "title", search_fields: [ "title" ], multiple: true }
+      - { label: "Короткий опис", name: "description", widget: "string" }
+      - { label: "Новела", name: "novels", widget: "file" }
