@@ -27,25 +27,42 @@ const mobileOpen = ref(false);
 </template>
 
 <style scoped>
+
 .base-root {
   min-height: 100vh;
   display: flex;
+  background: #f3f6f9;
 }
 
 main {
-  flex: 1
+  flex: 1;
+  max-width: 700px;
+  margin: 0 auto;
+  background: white;
+}
+
+main >>> img {
+  max-width: 100%;
+  height: auto;
 }
 
 .site-nav {
   width: 100%;
   max-width: 250px;
+  background: white;
 }
 
 /* MOBILE */
 @media (max-width: 700px) {
+  .base-root {
+    --toggle-nav-height: 3rem;
+    --animation-duration: .3s;
+    padding-block-end: var(--toggle-nav-height);
+  }
+
   .mobile-toggle {
     width: 100%;
-    height: 3rem;
+    height: var(--toggle-nav-height);
     border: none;
     background: none;
     font-size: 1.3rem;
@@ -58,13 +75,12 @@ main {
     max-width: 100%;
     border-top: 1px solid var(--el-menu-border-color);
     bottom: 0;
-    transition: transform .3s;
+    transition: transform var(--animation-duration);
     z-index: 5;
-    background: white;
   }
 
   .site-nav:not(.mobileOpen) {
-    transform: translateY(calc(100% - 3rem))
+    transform: translateY(calc(100% - var(--toggle-nav-height)))
   }
 
   .backdrop {
@@ -77,7 +93,7 @@ main {
     opacity: 0;
     z-index: 4;
     pointer-events: none;
-    transition: opacity .3s;
+    transition: opacity var(--animation-duration);
   }
 
   .backdrop.mobileOpen {
