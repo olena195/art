@@ -1,11 +1,16 @@
-<script lang="ts" setup></script>
+<script setup lang="ts">
+import { definePageMeta } from "#imports";
 
+definePageMeta({
+  layout: 'base'
+})
+</script>
 <template>
   <main>
-    <ContentList v-slot="{ list }" path="/arts" tag="ul">
+    <ContentList path="/arts" v-slot="{ list }" tag="ul">
       <li v-for="art in list" :key="art._path">
         <nuxt-link :to="art._path">
-          <img :alt="art.title" :src="art.art">
+          <img :src="art.art" :alt="art.title">
         </nuxt-link>
       </li>
     </ContentList>
