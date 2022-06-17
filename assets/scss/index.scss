@@ -1,5 +1,13 @@
 @use "element-plus/dist/index.css";
 
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
 a {
 	font-weight: 400;
 	color: var(--el-color-primary);

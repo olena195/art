@@ -1,3 +1,11 @@
+<script setup lang="ts">
+import { definePageMeta } from "#imports";
+
+definePageMeta({
+  layout: 'base'
+})
+</script>
+
 <template>
   <main>
     <ContentList path="/fanfics" v-slot="{ list }" tag="ul">
@@ -10,13 +18,3 @@
     </ContentList>
   </main>
 </template>
-
-<script>
-export default {
-  name: 'index.vue',
-};
-</script>
-
-<style scoped>
-
-</style>

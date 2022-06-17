@@ -1,5 +1,10 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { definePageMeta } from "#imports";
 
+definePageMeta({
+  layout: 'base'
+})
+</script>
 <template>
   <main>
     <ContentList path="/arts" v-slot="{ list }" tag="ul">

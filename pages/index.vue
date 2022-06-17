@@ -1,12 +1,13 @@
 <script setup lang="ts">
-import {ElButton} from "element-plus";
+import { definePageMeta } from "#imports";
+
+definePageMeta({
+  layout: 'base'
+})
 </script>
 
 <template>
   <main>
-    <ElButton>
-      Кнопка
-    </ElButton>
     <ul>
       <ContentNavigation v-slot="{ navigation }">
         <li v-for="nav of navigation">
