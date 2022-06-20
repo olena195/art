@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { provide, ref } from "#imports";
 import { ID_INJECTION_KEY } from 'element-plus';
-import LogoNuxt from '~icons/codicon/menu';
+import LogoNuxt from 'virtual:icons/codicon/menu';
 
 
 provide(ID_INJECTION_KEY, {
