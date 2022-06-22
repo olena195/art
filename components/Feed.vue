@@ -1,21 +1,41 @@
 <script lang="ts" setup>
-import { FeedArt, FeedItem, FeedComics, FeedFanfic } from "#components";
+import { FeedArt, FeedComics, FeedFanfic, FeedItem } from "#components";
 import { computed, queryContent, useAsyncData, useRoute } from "#imports";
 
 
 const route = useRoute();
 
-const type = computed(() => {
-  return typeof route.name === 'string' && [
-    'arts',
-    'comics',
-    'fanfics',
-  ].includes(route.name)
-    ? route.name
-    : '/';
+const path = computed(() => {
+  if (Array.isArray(route.params?.query) && ['tags', 'pairing', 'fandom'].includes(route.params?.query[0])) {
+    return '/'
+  } else {
+    return route.path;
+  }
 });
 
-const {data: content} = await useAsyncData(type.value, () => queryContent(type.value).find());
+const where = computed(() => {
+  if (!Array.isArray(route.params?.query) || !['tags', 'pairing', 'fandom'].includes(route.params?.query[0]) || !route.params?.query[1]) {
+    return {}
+  }
+
+  return {
+    [route.params?.query[0]]: {
+      $contains: route.params?.query[1]
+    }
+  }
+})
+
+
+const {data: content} = await useAsyncData(
+  route.fullPath,
+  () =>
+    queryContent(path.value)
+      .where({
+        ...where.value,
+        taxonomy: {$ne: true},
+      })
+      .find(),
+);
 
 
 
