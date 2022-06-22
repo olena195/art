@@ -46,7 +46,6 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: "Назва", name: "title", widget: "string" }
       - { label: "Фандом", name: "fandom", widget: "relation", collection: "fandom", value_field: "title", search_fields: [ "title" ], multiple: true }
       - { label: "Пейрінг", name: "pairing", widget: "relation", collection: "pairing", value_field: "title", search_fields: [ "title" ], multiple: true }
       - { label: "Теги", name: "tag", widget: "relation", collection: "tag", value_field: "title", search_fields: [ "title" ], multiple: true }
@@ -74,7 +73,6 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: "Назва", name: "title", widget: "string" }
       - { label: "Фандом", name: "fandom", widget: "relation", collection: "fandom", value_field: "title", search_fields: [ "title" ], multiple: true }
       - { label: "Пейрінг", name: "pairing", widget: "relation", collection: "pairing", value_field: "title", search_fields: [ "title" ], multiple: true }
       - { label: "Теги", name: "tag", widget: "relation", collection: "tag", value_field: "title", search_fields: [ "title" ], multiple: true }
