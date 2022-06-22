@@ -13,9 +13,7 @@ const mobileOpen = ref(false);
 </script>
 <template>
   <div class="base-root">
-    <main>
-      <slot/>
-    </main>
+
     <div class="backdrop" :class="{mobileOpen}" @click="mobileOpen = !mobileOpen"></div>
     <div class="site-nav" :class="{mobileOpen}">
       <button class="mobile-toggle" @click="mobileOpen = !mobileOpen">
@@ -23,27 +21,23 @@ const mobileOpen = ref(false);
       </button>
       <site-menu class="menu"/>
     </div>
+
+    <div class="content-wrapper">
+      <slot/>
+    </div>
   </div>
 </template>
 
 <style scoped>
 
+.content-wrapper {
+  width: 100%;
+}
+
 .base-root {
   min-height: 100vh;
   display: flex;
   background: #f3f6f9;
-}
-
-main {
-  flex: 1;
-  max-width: 700px;
-  margin: 0 auto;
-  background: white;
-}
-
-main :deep(img) {
-  max-width: 100%;
-  height: auto;
 }
 
 .site-nav {
@@ -109,12 +103,16 @@ main :deep(img) {
     display: none;
   }
 
+  .site-nav {
+    min-width: 250px;
+  }
+
   .backdrop {
     display: none;
   }
 
   .base-root {
-    flex-direction: row-reverse;
+    flex-direction: row;
   }
 
   .menu {
