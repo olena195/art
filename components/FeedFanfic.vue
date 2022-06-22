@@ -1,20 +1,25 @@
 <script lang="ts" setup>
 import { ElCard } from 'element-plus';
 
+
 defineProps<{
+  _path: string
+  title?: string
+  excerpt?: any
   fandom?: string[]
   pairing?: string[]
   tag?: string[]
-  comics: string[]
-  _path: string
 }>();
 </script>
 
 <template>
   <nuxt-link class="link-card" :to="_path">
-    <el-card :body-style="{ padding: '0px' }">
-      <img :src="comics[0]" alt=""/>
-
+    <el-card>
+      <template #header>
+        <div class="card-header">
+          <span>{{ title }}</span>
+        </div>
+      </template>
       <taxonomy-list style="padding: 14px"
                      :fandom="fandom"
                      :pairing="pairing"
@@ -25,17 +30,17 @@ defineProps<{
 </template>
 
 
-<style scoped>
+<style>
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .link-card {
   text-decoration: inherit;
   color: inherit;
-  max-width: 20rem;
-  width: 100%;
-  display: block;
-}
-
-
-img {
+  max-width: 40rem;
   width: 100%;
   display: block;
 }

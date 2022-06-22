@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { FeedArt, FeedItem, FeedComics } from "#components";
+import { FeedArt, FeedItem, FeedComics, FeedFanfic } from "#components";
 import { computed, queryContent, useAsyncData, useRoute } from "#imports";
 
 
@@ -29,6 +29,8 @@ function getComponentById(id: string) {
       return FeedArt;
     case 'comics' :
       return FeedComics;
+    case 'fanfics' :
+      return FeedFanfic;
     default :
       return FeedItem;
   }

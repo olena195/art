@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { ElButton, ElCard } from 'element-plus';
+import TaxonomyList from "~/components/TaxonomyList.vue";
 
 defineProps<{
   fandom?: string[]
@@ -16,13 +17,11 @@ defineProps<{
         :src="art"
         class="image"
       />
-      <div style="padding: 14px">
-
-        <el-button size="small" type="success" v-for="fandomName of fandom">{{ fandomName }}</el-button>
-        <el-button size="small" type="danger" v-for="pairingName of pairing">{{ pairingName }}</el-button>
-        <el-button size="small" type="primary" v-for="tagName of tag">{{ tagName }}</el-button>
-
-      </div>
+      <taxonomy-list style="padding: 14px"
+                     :fandom="fandom"
+                     :pairing="pairing"
+                     :tag="tag"
+      />
     </el-card>
   </nuxt-link>
 </template>
