@@ -4,7 +4,7 @@ import { ElCard } from 'element-plus';
 defineProps<{
   fandom?: string[]
   pairing?: string[]
-  tag?: string[]
+  tags?: string[]
   comics: string[]
   _path: string
 }>();
@@ -18,7 +18,7 @@ defineProps<{
       <taxonomy-list style="padding: 14px"
                      :fandom="fandom"
                      :pairing="pairing"
-                     :tag="tag"
+                     :tags="tags"
       />
     </el-card>
   </nuxt-link>

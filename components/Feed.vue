@@ -1,41 +1,39 @@
 <script lang="ts" setup>
 import { FeedArt, FeedComics, FeedFanfic, FeedItem } from "#components";
-import { computed, queryContent, useAsyncData, useRoute } from "#imports";
+import { queryContent, useAsyncData, useRoute } from "#imports";
 
 
 const route = useRoute();
 
-const path = computed(() => {
-  if (Array.isArray(route.params?.query) && ['tags', 'pairing', 'fandom'].includes(route.params?.query[0])) {
-    return '/'
-  } else {
-    return route.path;
-  }
-});
-
-const where = computed(() => {
-  if (!Array.isArray(route.params?.query) || !['tags', 'pairing', 'fandom'].includes(route.params?.query[0]) || !route.params?.query[1]) {
-    return {}
-  }
-
-  return {
-    [route.params?.query[0]]: {
-      $contains: route.params?.query[1]
-    }
-  }
-})
+const query = (Array.isArray(route.params?.query) ? route.params.query : [route.params?.query]).filter(q => !!q?.trim());
 
 
-const {data: content} = await useAsyncData(
-  route.fullPath,
+const {data: postsOrTaxonomy} = await useAsyncData(
+  `${route.fullPath}-preflight`,
   () =>
-    queryContent(path.value)
-      .where({
-        ...where.value,
-        taxonomy: {$ne: true},
-      })
+    queryContent(...query)
       .find(),
 );
+
+let posts;
+if (!postsOrTaxonomy.value.length || !postsOrTaxonomy.value[0].taxonomy) {
+  posts = postsOrTaxonomy;
+} else {
+
+
+  const {data} = await useAsyncData(
+    route.fullPath,
+    () => queryContent('/')
+      .where({
+        [query[0]]: {
+          $contains: postsOrTaxonomy.value[0].title,
+        },
+      })
+      .find(),
+  );
+
+  posts = data;
+}
 
 
 
@@ -60,7 +58,7 @@ function getComponentById(id: string) {
 
 <template>
   <div class="feed-container">
-    <component v-for="post of content" :is="getComponentById(post._id)" v-bind="post"/>
+    <component v-for="post of posts" :is="getComponentById(post._id)" v-bind="post"/>
   </div>
 </template>
 

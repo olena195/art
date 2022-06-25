@@ -8,7 +8,7 @@ defineProps<{
   excerpt?: any
   fandom?: string[]
   pairing?: string[]
-  tag?: string[]
+  tags?: string[]
 }>();
 </script>
 
@@ -23,7 +23,7 @@ defineProps<{
       <taxonomy-list style="padding: 14px"
                      :fandom="fandom"
                      :pairing="pairing"
-                     :tag="tag"
+                     :tags="tags"
       />
     </el-card>
   </nuxt-link>

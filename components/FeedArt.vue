@@ -5,7 +5,7 @@ import TaxonomyList from "~/components/TaxonomyList.vue";
 defineProps<{
   fandom?: string[]
   pairing?: string[]
-  tag?: string[]
+  tags?: string[]
   art: string
 }>();
 </script>
@@ -20,7 +20,7 @@ defineProps<{
       <taxonomy-list style="padding: 14px"
                      :fandom="fandom"
                      :pairing="pairing"
-                     :tag="tag"
+                     :tags="tags"
       />
     </el-card>
   </nuxt-link>
