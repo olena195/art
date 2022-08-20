@@ -53,7 +53,7 @@ collections:
       - { label: "Фандом", name: "fandom", widget: "relation", collection: "fandom", value_field: "title", search_fields: [ "title" ], multiple: true }
       - { label: "Пейрінг", name: "pairing", widget: "relation", collection: "pairing", value_field: "title", search_fields: [ "title" ], multiple: true }
       - { label: "Теги", name: "tags", widget: "relation", collection: "tags", value_field: "title", search_fields: [ "title" ], multiple: true }
-      - {label: "Дата", name: "date",  widget: "date", format: "DD.MM.YYYY"}
+      - { label: "Дата", name: "date",  widget: "date", date_format: true }
       - { label: "Арт", name: "art", widget: "image", allow_multiple: false }
       
 
@@ -82,7 +82,7 @@ collections:
       - { label: "Фандом", name: "fandom", widget: "relation", collection: "fandom", value_field: "title", search_fields: [ "title" ], multiple: true }
       - { label: "Пейрінг", name: "pairing", widget: "relation", collection: "pairing", value_field: "title", search_fields: [ "title" ], multiple: true }
       - { label: "Теги", name: "tags", widget: "relation", collection: "tags", value_field: "title", search_fields: [ "title" ], multiple: true }
-      - {label: "Дата", name: "date",  widget: "date", format: "DD.MM.YYYY"}
+      - { label: "Дата", name: "date",  widget: "date", date_format: true }
       - { label: "Короткий опис", name: "description", widget: "string" }
       - { label: "Комікс", name: "comics", widget: "list", field: { label: Image, name: image, widget: image } }
 
