@@ -7,13 +7,13 @@
     "preview": "nuxt preview"
   },
   "devDependencies": {
-    "@iconify/json": "2.1.93",
+    "@iconify/json": "2.1.95",
     "@nuxt/content": "2.0.1",
     "nuxt": "3.0.0-rc.8",
-    "sass": "1.54.4",
+    "sass": "1.54.5",
     "unplugin-icons": "0.14.8"
   },
   "dependencies": {
-    "element-plus": "2.2.13"
+    "element-plus": "2.2.14"
   }
 }
