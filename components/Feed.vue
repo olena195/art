@@ -15,18 +15,19 @@ const {data: postsOrTaxonomy} = await useAsyncData(
       .find(),
 );
 
+const targetItem = postsOrTaxonomy.value.find(i => i._path === '/' + query.join('/'))
+
 let posts;
-if (!postsOrTaxonomy.value.length || !postsOrTaxonomy.value[0].taxonomy) {
+if (!postsOrTaxonomy.value.length || !targetItem || !targetItem.taxonomy) {
   posts = postsOrTaxonomy;
 } else {
-
 
   const {data} = await useAsyncData(
     route.fullPath,
     () => queryContent('/')
       .where({
         [query[0]]: {
-          $contains: postsOrTaxonomy.value[0].title,
+          $contains: targetItem.title,
         },
       })
       .find(),
