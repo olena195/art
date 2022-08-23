@@ -21,12 +21,12 @@ const optimizedPreview = computed(() => {
       return props.art
     }
 
-    parsedUrl.pathname = parsedUrl.host+parsedUrl.pathname
+    parsedUrl.pathname = parsedUrl.host + parsedUrl.pathname
     parsedUrl.port = ''
     parsedUrl.host = 'i0.wp.com'
     parsedUrl.protocol = 'https:'
     parsedUrl.searchParams.set('w', '320')
-    parsedUrl.searchParams.set('quality','50')
+    parsedUrl.searchParams.set('quality', '50')
 
     return parsedUrl.toString()
   } catch (_) {
@@ -38,19 +38,19 @@ const optimizedPreview = computed(() => {
 </script>
 
 <template>
-  <nuxt-link class="link-card" :to="art" target="_blank">
-    <el-card :body-style="{ padding: '0px' }">
+  <el-card class="link-card"  :body-style="{ padding: '0px' }">
+    <nuxt-link :to="art" target="_blank">
       <img
         :src="optimizedPreview"
         class="image"
       />
-      <taxonomy-list style="padding: 14px"
-                     :fandom="fandom"
-                     :pairing="pairing"
-                     :tags="tags"
-      />
-    </el-card>
-  </nuxt-link>
+    </nuxt-link>
+    <taxonomy-list style="padding: 14px"
+                   :fandom="fandom"
+                   :pairing="pairing"
+                   :tags="tags"
+    />
+  </el-card>
 </template>
 
 
@@ -61,6 +61,7 @@ const optimizedPreview = computed(() => {
   max-width: 16rem;
   width: 100%;
   display: block;
+  height: min-content;
 }
 
 
