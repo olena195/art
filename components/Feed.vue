@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { FeedArt, FeedComics, FeedFanfic, FeedItem } from "#components";
-import { queryContent, useAsyncData, useRoute } from "#imports";
+import {FeedArt, FeedComics, FeedFanfic, FeedItem} from "#components";
+import {queryContent, useAsyncData, useRoute} from "#imports";
 
 
 const route = useRoute();
@@ -8,33 +8,52 @@ const route = useRoute();
 const query = (Array.isArray(route.params?.query) ? route.params.query : [route.params?.query]).filter(q => !!q?.trim());
 
 
-const {data: postsOrTaxonomy} = await useAsyncData(
-  `${route.fullPath}-preflight`,
-  () =>
-    queryContent(...query)
-      .find(),
-);
+const {data: posts} = await useAsyncData('a', async () => {
+  const postsOrTaxonomy = await queryContent(...query).find()
+  if (!postsOrTaxonomy || !postsOrTaxonomy.length) {
+    return []
+  }
 
-let posts;
-if (!postsOrTaxonomy.value.length || !postsOrTaxonomy.value[0].taxonomy) {
-  posts = postsOrTaxonomy;
-} else {
+  const isTaxonomy = postsOrTaxonomy[0].taxonomy === true
 
+  if (!isTaxonomy) {
+    return postsOrTaxonomy.filter(p => !p.taxonomy)
+  }
+  console.log(query[0], postsOrTaxonomy[0].title)
+  const p2 = await queryContent('/')
+    .where({
+      'fandom': {
+        $contains: postsOrTaxonomy[0].title,
+      },
+    })
+    .find()
 
-  const {data} = await useAsyncData(
-    route.fullPath,
-    () => queryContent('/')
-      .where({
-        [query[0]]: {
-          $contains: postsOrTaxonomy.value[0].title,
-        },
-      })
-      .find(),
-  );
+  console.log({p2})
 
-  posts = data;
-}
+  return p2
+})
 
+// const componentsForPosts = computed(() => posts.value.map(p => getComponentById(p._id) ))
+
+// let posts;
+// if (!postsOrTaxonomy.value.length || !postsOrTaxonomy.value[0].taxonomy) {
+//   posts = postsOrTaxonomy;
+// } else {
+//
+//
+//   const {data} = await useAsyncData(
+//     route.fullPath,
+//     () => queryContent('/')
+//       .where({
+//         [query[0]]: {
+//           $contains: postsOrTaxonomy.value[0].title,
+//         },
+//       })
+//       .find(),
+//   );
+//
+//   posts = data;
+// }
 
 
 /**
