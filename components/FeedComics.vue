@@ -57,7 +57,7 @@ const optimizedPreview = computed(() => {
 .link-card {
   text-decoration: inherit;
   color: inherit;
-  max-width: 20rem;
+  max-width: 16rem;
   width: 100%;
   display: block;
 }
