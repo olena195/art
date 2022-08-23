@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { provide, ref } from "#imports";
 import { ID_INJECTION_KEY } from 'element-plus';
-import LogoNuxt from 'virtual:icons/codicon/menu';
+// import LogoNuxt from 'virtual:icons/codicon/menu';
 
 
 provide(ID_INJECTION_KEY, {
@@ -17,7 +17,7 @@ const mobileOpen = ref(false);
     <div class="backdrop" :class="{mobileOpen}" @click="mobileOpen = !mobileOpen"></div>
     <div class="site-nav" :class="{mobileOpen}">
       <button class="mobile-toggle" @click="mobileOpen = !mobileOpen">
-        <LogoNuxt/>
+<!--        <LogoNuxt/>-->
       </button>
       <site-menu class="menu"/>
     </div>

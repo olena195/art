@@ -21,7 +21,6 @@ export default defineNuxtConfig({
     // build modules
     modules: [
       '@nuxt/content',
-      'unplugin-icons/nuxt',
     ],
 
     // auto import components
