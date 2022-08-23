@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { provide, ref } from "#imports";
-import { ID_INJECTION_KEY } from 'element-plus';
-// import LogoNuxt from 'virtual:icons/codicon/menu';
+import {provide, ref} from "#imports";
+import {ID_INJECTION_KEY} from 'element-plus';
+import {IconMenu} from '@iconify-prerendered/vue-ep'
 
 
 provide(ID_INJECTION_KEY, {
@@ -17,7 +17,7 @@ const mobileOpen = ref(false);
     <div class="backdrop" :class="{mobileOpen}" @click="mobileOpen = !mobileOpen"></div>
     <div class="site-nav" :class="{mobileOpen}">
       <button class="mobile-toggle" @click="mobileOpen = !mobileOpen">
-<!--        <LogoNuxt/>-->
+        <IconMenu class="mobile-toggle-icon"/>
       </button>
       <site-menu class="menu"/>
     </div>
@@ -61,6 +61,12 @@ const mobileOpen = ref(false);
     background: none;
     font-size: 1.3rem;
     cursor: pointer;
+  }
+
+  .mobile-toggle-icon {
+    height: 50%;
+    width: auto;
+    opacity: 0.5;
   }
 
   .site-nav {
