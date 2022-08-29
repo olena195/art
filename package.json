@@ -13,6 +13,6 @@
     "sass": "1.54.5"
   },
   "dependencies": {
-    "element-plus": "2.2.14"
+    "element-plus": "2.2.15"
   }
 }
