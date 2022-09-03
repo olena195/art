@@ -1,41 +1,68 @@
 <script lang="ts" setup>
-import { FeedArt, FeedComics, FeedFanfic, FeedItem } from "#components";
-import { queryContent, useAsyncData, useRoute } from "#imports";
+import {FeedArt, FeedComics, FeedFanfic, FeedItem} from "#components";
+import {queryContent, useAsyncData, useRoute} from "#imports";
 
 
 const route = useRoute();
 
 const query = (Array.isArray(route.params?.query) ? route.params.query : [route.params?.query]).filter(q => !!q?.trim());
 
+const isTaxonomy = (s: string | undefined): s is 'fandom' | 'pairing' | 'tags' => typeof s === 'string' && ['fandom', 'pairing', 'tags'].includes(s)
 
-const {data: postsOrTaxonomy} = await useAsyncData(
-  `${route.fullPath}-preflight`,
-  () =>
-    queryContent(...query)
-      .find(),
-);
+const {data: posts} = await useAsyncData(route.fullPath, async () => {
+  const [type, term] = query
+  if (isTaxonomy(type)) {
 
-const targetItem = postsOrTaxonomy.value.find(i => i._path === '/' + query.join('/'))
-
-let posts;
-if (!postsOrTaxonomy.value.length || !targetItem || !targetItem.taxonomy) {
-  posts = postsOrTaxonomy;
-} else {
-
-  const {data} = await useAsyncData(
-    route.fullPath,
-    () => queryContent('/')
+    const {title: termTitle} = await queryContent(type)
       .where({
-        [query[0]]: {
-          $contains: targetItem.title,
-        },
+        taxonomy: true,
+        _path: `/${type}/${term}`
       })
-      .find(),
-  );
+      .only('title')
+      .findOne()
 
-  posts = data;
-}
+    return queryContent().where({
+      [type]: {
+        $contains: termTitle,
+      }
+    }).find()
+  }
 
+  return queryContent(type || '').where({
+    taxonomy: {
+      $ne: true
+    }
+  }).find()
+})
+
+//
+// const {data: postsOrTaxonomy} = await useAsyncData(
+//   `${route.fullPath}-preflight`,
+//   () =>
+//     queryContent(...query)
+//       .find(),
+// );
+//
+// const targetItem = postsOrTaxonomy.value.find(i => i._path === '/' + query.join('/'))
+//
+// let posts;
+// if (!postsOrTaxonomy.value.length || !targetItem || !targetItem.taxonomy) {
+//   posts = postsOrTaxonomy;
+// } else {
+//
+//   const {data} = await useAsyncData(
+//     route.fullPath,
+//     () => queryContent('/')
+//       .where({
+//         [query[0]]: {
+//           $contains: targetItem.title,
+//         },
+//       })
+//       .find(),
+//   );
+//
+//   posts = data;
+// }
 
 
 /**
