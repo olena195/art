@@ -9,7 +9,7 @@
   "devDependencies": {
     "@iconify-prerendered/vue-ep": "0.10.1660284884",
     "@nuxt/content": "2.0.1",
-    "nuxt": "3.0.0-rc.8",
+    "nuxt": "3.0.0-rc.9",
     "sass": "1.54.5"
   },
   "dependencies": {
