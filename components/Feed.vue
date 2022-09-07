@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import {FeedArt, FeedComics, FeedFanfic, FeedItem} from "#components";
 import {queryContent, useAsyncData, useRoute} from "#imports";
+import {useTerm} from "~/composables/useTerm";
 
 
 const route = useRoute();
@@ -9,23 +10,19 @@ const query = (Array.isArray(route.params?.query) ? route.params.query : [route.
 
 const isTaxonomy = (s: string | undefined): s is 'fandom' | 'pairing' | 'tags' => typeof s === 'string' && ['fandom', 'pairing', 'tags'].includes(s)
 
-const {data: posts} = await useAsyncData(route.fullPath, async () => {
-  const [type, term] = query
+const {data: posts} = await useAsyncData(`content-${route.fullPath}`, async () => {
+  const [type, slug] = query
+
   if (isTaxonomy(type)) {
-
-    const {title: termTitle} = await queryContent(type)
-      .where({
-        taxonomy: true,
-        _path: `/${type}/${term}`
-      })
-      .only('title')
-      .findOne()
-
-    return queryContent().where({
+    const term = await useTerm({type, slug})
+    // console.log({term})
+    const posts = await queryContent().where({
       [type]: {
-        $contains: termTitle,
+        $contains: term.title!
       }
     }).find()
+    console.log(route.fullPath, posts.length)
+    return posts
   }
 
   return queryContent(type || '').where({

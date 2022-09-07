@@ -1,28 +1,31 @@
-import { defineNuxtConfig } from 'nuxt'
+import {defineNuxtConfig} from 'nuxt'
 
 const lifecycle = process.env.npm_lifecycle_event
 
 // https://v3.nuxtjs.org/docs/directory-structure/nuxt.config
 export default defineNuxtConfig({
-    // css
-    css: ['~/assets/scss/index.scss'],
+  ssr: true,
+  target: 'static',
 
-    // build
-    build: {
-        transpile:
-            lifecycle === 'build' || lifecycle === 'generate' ? ['element-plus'] : [],
-    },
+  // css
+  css: ['~/assets/scss/index.scss'],
 
-    typescript: {
-        strict: true,
-        shim: false,
-    },
+  // build
+  build: {
+    transpile:
+      lifecycle === 'build' || lifecycle === 'generate' ? ['element-plus'] : [],
+  },
 
-    // build modules
-    modules: [
-      '@nuxt/content',
-    ],
+  typescript: {
+    strict: true,
+    shim: false,
+  },
 
-    // auto import components
-    components: true,
+  // build modules
+  modules: [
+    '@nuxt/content',
+  ],
+
+  // auto import components
+  components: true,
 })
