@@ -35,15 +35,15 @@ const navigation = computed(() => data.value.map(l => {
     mode="vertical"
   >
     <template v-for="link of navigation">
-      <el-menu-item v-if="!link.children?.length" :index="link._path" :route="link._path">
-        {{ link.navTitle || link.title }}
+      <el-menu-item v-if="!link.children?.length" :index="link._path">
+        <nuxt-link :to="link._path">{{ link.navTitle || link.title }}</nuxt-link>
       </el-menu-item>
       <el-sub-menu v-else :index="link._path">
         <template #title>{{ link.navTitle || link.title }}</template>
         <el-menu-item v-for="childLink of link.children"
                       :key="childLink._path"
-                      :index="childLink._path"
-                      :route="childLink._path">{{ childLink.navTitle || childLink.title }}
+                      :index="childLink._path">
+          <nuxt-link :to="childLink._path">{{ childLink.navTitle || childLink.title }}</nuxt-link>
         </el-menu-item>
       </el-sub-menu>
     </template>

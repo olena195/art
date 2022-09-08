@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { ElButton } from 'element-plus';
-import {computed, fetchContentNavigation, queryContent, useAsyncData} from "#imports";
+import {computed, queryContent, useAsyncData} from "#imports";
 
 
 const props = defineProps<{
@@ -28,14 +27,17 @@ const tagsItems = computed(() => allTags.value ? allTags.value.filter(f => props
 
 <template>
   <div>
-    <nuxt-link v-for="i of fandoms" :key="i._path" :to="i._path">
-      <el-button class="taxonomy-term" size="small" type="success" >{{ i.title }}</el-button>
+    <nuxt-link v-for="i of fandoms" :key="i._path" :to="i._path"
+               class="el-button el-button--success el-button--small taxonomy-term">
+      {{ i.title }}
     </nuxt-link>
-    <nuxt-link v-for="i of pairings" :key="i._path" :to="i._path">
-      <el-button class="taxonomy-term" size="small" type="danger" >{{ i.title }}</el-button>
+    <nuxt-link v-for="i of pairings" :key="i._path" :to="i._path"
+               class="el-button el-button--danger el-button--small taxonomy-term">
+      {{ i.title }}
     </nuxt-link>
-    <nuxt-link v-for="i of tagsItems" :key="i._path" :to="i._path">
-      <el-button class="taxonomy-term" size="small" type="primary" >{{ i.title }}</el-button>
+    <nuxt-link v-for="i of tagsItems" :key="i._path" :to="i._path"
+               class="el-button el-button--primary el-button--small taxonomy-term">
+      {{ i.title }}
     </nuxt-link>
   </div>
 </template>
@@ -46,7 +48,8 @@ div {
   flex-wrap: wrap;
   gap: 5px;
 }
-  .taxonomy-term {
-    margin: 0;
-  }
+
+.taxonomy-term {
+  margin: 0;
+}
 </style>
