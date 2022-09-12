@@ -2,9 +2,11 @@
 import {FeedArt, FeedComics, FeedFanfic, FeedItem} from "#components";
 import {queryContent, useAsyncData, useRoute} from "#imports";
 import {useTerm} from "~/composables/useTerm";
+import {callWithNuxt} from "#app";
 
 
 const route = useRoute();
+const nuxtApp = useNuxtApp();
 
 const query = (Array.isArray(route.params?.query) ? route.params.query : [route.params?.query]).filter(q => !!q?.trim());
 
@@ -15,14 +17,15 @@ const {data: posts} = await useAsyncData(`content-${route.fullPath}`, async () =
 
   if (isTaxonomy(type)) {
     const term = await useTerm({type, slug})
-    // console.log({term})
-    const posts = await queryContent().where({
+    /**
+     * WORKAROUND
+     * @see https://github.com/nuxt/content/issues/1510#issuecomment-1243620985
+     */
+    return callWithNuxt(nuxtApp, () => queryContent().where({
       [type]: {
         $contains: term.title!
       }
-    }).find()
-    console.log(route.fullPath, posts.length)
-    return posts
+    }).find())
   }
 
   return queryContent(type || '').where({
