@@ -6,6 +6,7 @@ const lifecycle = process.env.npm_lifecycle_event
 export default defineNuxtConfig({
   ssr: true,
   target: 'static',
+  telemetry: false,
 
   // css
   css: ['~/assets/scss/index.scss'],
