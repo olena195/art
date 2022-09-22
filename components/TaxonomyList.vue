@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import {computed, queryContent, useAsyncData} from "#imports";
-
+import {ElTag} from "element-plus";
 
 const props = defineProps<{
   fandom?: string[]
@@ -27,17 +27,14 @@ const tagsItems = computed(() => allTags.value ? allTags.value.filter(f => props
 
 <template>
   <div>
-    <nuxt-link v-for="i of fandoms" :key="i._path" :to="i._path"
-               class="el-button el-button--success el-button--small taxonomy-term">
-      {{ i.title }}
+    <nuxt-link v-for="i of fandoms" :key="i._path" :to="i._path" >
+      <el-tag type="success">{{ i.title }}</el-tag>
     </nuxt-link>
-    <nuxt-link v-for="i of pairings" :key="i._path" :to="i._path"
-               class="el-button el-button--danger el-button--small taxonomy-term">
-      {{ i.title }}
+    <nuxt-link v-for="i of pairings" :key="i._path" :to="i._path" >
+      <el-tag type="danger">{{ i.title }}</el-tag>
     </nuxt-link>
-    <nuxt-link v-for="i of tagsItems" :key="i._path" :to="i._path"
-               class="el-button el-button--primary el-button--small taxonomy-term">
-      {{ i.title }}
+    <nuxt-link v-for="i of tagsItems" :key="i._path" :to="i._path" >
+      <el-tag type="primary">{{ i.title }}</el-tag>
     </nuxt-link>
   </div>
 </template>
@@ -47,10 +44,5 @@ div {
   display: flex;
   flex-wrap: wrap;
   gap: 5px;
-}
-
-.el-button.taxonomy-term {
-  margin: 0;
-  text-decoration: none;
 }
 </style>
