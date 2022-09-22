@@ -1,6 +1,6 @@
-import {defineNuxtConfig} from 'nuxt'
+import {defineNuxtConfig} from 'nuxt/config'
+import ElementPlus from 'unplugin-element-plus/vite'
 
-const lifecycle = process.env.npm_lifecycle_event
 
 // https://v3.nuxtjs.org/docs/directory-structure/nuxt.config
 export default defineNuxtConfig({
@@ -13,8 +13,11 @@ export default defineNuxtConfig({
 
   // build
   build: {
-    transpile:
-      lifecycle === 'build' || lifecycle === 'generate' ? ['element-plus'] : [],
+    transpile: ['element-plus/es'],
+  },
+
+  vite: {
+    plugins: [ElementPlus()],
   },
 
   typescript: {
