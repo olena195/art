@@ -35,36 +35,6 @@ const {data: posts} = await useAsyncData(`content-${route.fullPath}`, async () =
   }).find()
 })
 
-//
-// const {data: postsOrTaxonomy} = await useAsyncData(
-//   `${route.fullPath}-preflight`,
-//   () =>
-//     queryContent(...query)
-//       .find(),
-// );
-//
-// const targetItem = postsOrTaxonomy.value.find(i => i._path === '/' + query.join('/'))
-//
-// let posts;
-// if (!postsOrTaxonomy.value.length || !targetItem || !targetItem.taxonomy) {
-//   posts = postsOrTaxonomy;
-// } else {
-//
-//   const {data} = await useAsyncData(
-//     route.fullPath,
-//     () => queryContent('/')
-//       .where({
-//         [query[0]]: {
-//           $contains: targetItem.title,
-//         },
-//       })
-//       .find(),
-//   );
-//
-//   posts = data;
-// }
-
-
 /**
  * @param id в форматі content:dir:filename
  */

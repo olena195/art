@@ -6,6 +6,7 @@ const props = defineProps<{
   fandom?: string[]
   pairing?: string[]
   tags?: string[]
+  description?: string
   comics: string[]
   _path: string
 }>();
@@ -20,7 +21,7 @@ const optimizedPreview = process.env.NODE_ENV === 'prerenderer'
 <template>
   <el-card  class="link-card" :body-style="{ padding: '0px' }">
     <nuxt-link :to="_path">
-      <img :src="optimizedPreview" alt=""/>
+      <img :src="optimizedPreview" :alt="description"/>
     </nuxt-link>
 
     <taxonomy-list style="padding: 14px"
