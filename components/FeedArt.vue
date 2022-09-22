@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import {ElCard} from 'element-plus';
 import TaxonomyList from "~/components/TaxonomyList.vue";
+import {computed, useRequestHeaders} from "#imports";
 
 const props = defineProps<{
   fandom?: string[]
@@ -13,6 +14,8 @@ const props = defineProps<{
 const optimizedPreview = process.env.NODE_ENV === 'prerender'
   ? `https://i0.wp.com/kyivska-zefirka.netlify.app${props.art}?w=320&quality=50`
   : props.art
+
+console.log({env: process.env.NODE_ENV, optimizedPreview})
 
 </script>
 
