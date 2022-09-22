@@ -10,30 +10,10 @@ const props = defineProps<{
   art: string
 }>();
 
-const optimizedPreview = computed(() => {
-  const host = process.client ? location.host : useRequestHeaders().host
-  const absoluteUrl = props.art.startsWith('http') ? props.art : host ? `http${host.startsWith('localhost') ? '' : 's'}://${host}${props.art}` : props.art
 
-  try {
-    const parsedUrl = new URL(absoluteUrl)
-
-    if (parsedUrl.hostname === 'localhost') {
-      return props.art
-    }
-
-    parsedUrl.pathname = parsedUrl.host + parsedUrl.pathname
-    parsedUrl.port = ''
-    parsedUrl.host = 'i0.wp.com'
-    parsedUrl.protocol = 'https:'
-    parsedUrl.searchParams.set('w', '320')
-    parsedUrl.searchParams.set('quality', '50')
-
-    return parsedUrl.toString()
-  } catch (_) {
-    console.warn(_)
-    return props.art
-  }
-})
+const optimizedPreview = process.env.NODE_ENV === 'prerenderer'
+  ? computed(() => `https://i0.wp.com/kyivska-zefirka.netlify.app${props.art}?w=320&quality=50`)
+  : props.art
 
 </script>
 

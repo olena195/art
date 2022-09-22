@@ -34,7 +34,7 @@ const tagsItems = computed(() => allTags.value ? allTags.value.filter(f => props
       <el-tag type="danger">{{ i.title }}</el-tag>
     </nuxt-link>
     <nuxt-link v-for="i of tagsItems" :key="i._path" :to="i._path" >
-      <el-tag type="primary">{{ i.title }}</el-tag>
+      <el-tag type="info">{{ i.title }}</el-tag>
     </nuxt-link>
   </div>
 </template>
