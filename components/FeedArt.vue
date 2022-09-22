@@ -10,20 +10,13 @@ const props = defineProps<{
   art: string
 }>();
 
-
-const optimizedPreview = process.env.NODE_ENV === 'prerender'
-  ? `https://i0.wp.com/kyivska-zefirka.netlify.app${props.art}?w=320&quality=50`
-  : props.art
-
-console.log({env: process.env.NODE_ENV, optimizedPreview})
-
 </script>
 
 <template>
   <el-card class="link-card"  :body-style="{ padding: '0px' }">
     <nuxt-link :to="art" target="_blank">
       <img
-        :src="optimizedPreview"
+        :src="art"
         class="image"
       />
     </nuxt-link>
