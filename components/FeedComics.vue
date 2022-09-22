@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import {ElCard} from 'element-plus';
-import {computed, useRequestHeaders} from "#imports";
 
 const props = defineProps<{
   fandom?: string[]
@@ -12,8 +11,8 @@ const props = defineProps<{
 }>();
 
 
-const optimizedPreview = process.env.NODE_ENV === 'prerenderer'
-  ? computed(() => `https://i0.wp.com/kyivska-zefirka.netlify.app${props.comics[0]}?w=320&quality=50`)
+const optimizedPreview = process.env.NODE_ENV === 'prerender'
+  ? `https://i0.wp.com/kyivska-zefirka.netlify.app${props.comics[0]}?w=320&quality=50`
   : props.comics[0]
 
 </script>
