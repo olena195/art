@@ -15,7 +15,7 @@ const {data} = await useAsyncData<MenuItem[]>('navigation', () => {
   return fetchContentNavigation();
 });
 
-const navigation = computed(() => data.value.map(l => {
+const navigation = computed(() => (data.value || []).map(l => {
   const config = navConfig.get(l._path);
   if (!config) {
     return l;
