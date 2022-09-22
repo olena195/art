@@ -49,3 +49,10 @@ const navigation = computed(() => data.value.map(l => {
     </template>
   </el-menu>
 </template>
+
+<style scoped>
+.el-menu-item a {
+  text-decoration: none;
+  color: inherit;
+}
+</style>

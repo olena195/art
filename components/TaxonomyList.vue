@@ -49,7 +49,8 @@ div {
   gap: 5px;
 }
 
-.taxonomy-term {
+.el-button.taxonomy-term {
   margin: 0;
+  text-decoration: none;
 }
 </style>
