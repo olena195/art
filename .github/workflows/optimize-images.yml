@@ -13,6 +13,9 @@ concurrency:
 
 jobs:
   optimaze-uploads:
+    environment:
+      name: production
+      url: https://kyivska-zefirka.netlify.app/
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
