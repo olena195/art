@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import {FeedArt, FeedComics, FeedFanfic, FeedItem} from "#components";
-import {queryContent, useAsyncData, useRoute} from "#imports";
+import {FeedComics, FeedFanfic, FeedItem} from "#components";
+import {queryContent, useAsyncData, useNuxtApp, useRoute} from "#imports";
 import {useTerm} from "~/composables/useTerm";
 import {callWithNuxt} from "#app";
 
@@ -42,7 +42,6 @@ function getComponentById(id: string) {
   const [, dir] = id.split(':');
   switch (dir) {
     case 'arts' :
-      return FeedArt;
     case 'comics' :
       return FeedComics;
     case 'fanfics' :

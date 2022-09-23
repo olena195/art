@@ -1,21 +1,24 @@
 <script lang="ts" setup>
 import {ElCard} from 'element-plus';
+import {computed} from "#imports";
 
 const props = defineProps<{
   fandom?: string[]
   pairing?: string[]
   tags?: string[]
   description?: string
-  comics: string[]
+  pictures: string | string[]
   _path: string
 }>();
+
+const preview = computed(() => Array.isArray(props.pictures) ? props.pictures[0] : props.pictures)
 
 </script>
 
 <template>
   <el-card  class="link-card" :body-style="{ padding: '0px' }">
     <nuxt-link :to="_path">
-      <ImageThumbnail :src="comics[0]" :alt="description"/>
+      <ImageThumbnail :src="preview" :alt="description"/>
     </nuxt-link>
 
     <taxonomy-list style="padding: 14px"
