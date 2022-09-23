@@ -32,7 +32,7 @@ jobs:
 
       # Створення мініатюр
       - run: cp -r ./public/images/ ./public/thumbnails/
-      - run: imgp -x 300x0 -wraсk ./public/thumbnails/
+      - run: imgp -wraсkx 300x0 ./public/thumbnails/
       - run: git add -A
       - run: "git diff-index --quiet HEAD || git commit -m 'perf(images): Згенеровано мініатюри'"
 
