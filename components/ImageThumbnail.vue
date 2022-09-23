@@ -1,6 +1,6 @@
 <template>
   <picture>
-    <source :src="thumbnailSrc">
+    <source :srcset="thumbnailSrc">
     <img :src="src" :alt="alt || ''" />
   </picture>
 
