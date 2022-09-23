@@ -1,0 +1,21 @@
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - public/images/**
+
+concurrency:
+  group: prod-image-optimization
+  cancel-in-progress: true
+
+jobs:
+  optimaze-uploads:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - run: apt install imgp
