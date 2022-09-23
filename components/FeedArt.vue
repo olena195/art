@@ -15,10 +15,7 @@ const props = defineProps<{
 <template>
   <el-card class="link-card"  :body-style="{ padding: '0px' }">
     <nuxt-link :to="art" target="_blank">
-      <img
-        :src="art"
-        class="image"
-      />
+      <ImageThumbnail :src="art" class="image"/>
     </nuxt-link>
     <taxonomy-list style="padding: 14px"
                    :fandom="fandom"
