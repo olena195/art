@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import {computed, definePageMeta, queryContent, useAsyncData, useRoute} from "#imports";
-import { ElButton, ElCard } from 'element-plus';
+import {ElButton, ElCard} from 'element-plus';
 
 definePageMeta({
   layout: 'base',
@@ -15,7 +15,6 @@ const pictures = computed(() => content.value ? Array.isArray(content.value.pict
 <template>
   <main>
     <el-card tag="main" :body-style="{ padding: '0px' }">
-
       <template #header>
         <div class="card-header">
           <div>
@@ -26,7 +25,10 @@ const pictures = computed(() => content.value ? Array.isArray(content.value.pict
         </div>
       </template>
 
-      <img v-for="pic of pictures" :src="pic" :key="pic" />
+      <a title="Відкрити в повному розмірі" target="_blank" v-for="pic of pictures" :key="pic"
+         :href="'https://github.com/olena195/blog_kyivska_zefirka/raw/main/public'+pic">
+        <img :src="pic"/>
+      </a>
     </el-card>
   </main>
 </template>
@@ -38,7 +40,6 @@ main {
   max-width: 800px;
   margin: 0 auto;
 }
-
 
 
 img {

@@ -28,7 +28,10 @@ const pictures = computed(() => content.value ? Array.isArray(content.value.pict
       </template>
 
 
-      <img v-for="pic of pictures" :src="pic" :key="pic"/>
+      <a title="Відкрити в повному розмірі" target="_blank" v-for="pic of pictures" :key="pic"
+         :href="'https://github.com/olena195/blog_kyivska_zefirka/raw/main/public'+pic">
+        <img :src="pic"/>
+      </a>
     </el-card>
   </main>
 </template>
