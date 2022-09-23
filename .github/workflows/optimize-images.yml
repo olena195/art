@@ -5,7 +5,7 @@ on:
       - main
 
 concurrency:
-  group: prod-image-optimization
+  group: deploy-to-production
   cancel-in-progress: true
 
 jobs:
@@ -32,7 +32,7 @@ jobs:
 
       # Створення мініатюр
       - run: cp -r ./public/images/ ./public/thumbnails/
-      - run: imgp -wraсkx 300x0 ./public/thumbnails/
+      - run: imgp -x 300x0 -wrake ./public/thumbnails/
       - run: git add -A
       - run: "git diff-index --quiet HEAD || git commit -m 'perf(images): Згенеровано мініатюри'"
 
