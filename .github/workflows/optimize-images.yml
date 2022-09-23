@@ -20,7 +20,7 @@ jobs:
         with:
           python-version: '3.10'
       - run: sudo apt install imgp
-      - run: imgp -x 800x0 -wrakeO ./public/images/
+      - run: imgp -x 800x0 -wrake ./public/images/
       - run: git config user.name github-actions
       - run: git config user.email github-actions@github.com
       - run: git add -A
