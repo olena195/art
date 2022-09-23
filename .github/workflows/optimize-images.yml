@@ -28,4 +28,4 @@ jobs:
       - run: git config user.email github-actions@github.com
       - run: git add -A
       - run: "git diff-index --quiet HEAD || git commit -m 'perf(images): Оптимізовано зображення'"
-      - run: git push main origin:production --force
+      - run: git push origin main:production --force
