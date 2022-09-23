@@ -19,14 +19,22 @@ jobs:
       - run: git config user.name github-actions
       - run: git config user.email github-actions@github.com
 
-      # Оптимізація зображень
+      # Встановлення imgp для роботи з зображеннями
       - uses: actions/setup-python@v4
         with:
           python-version: '3.10'
       - run: sudo apt install imgp
+
+      # Оптимізація зображень
       - run: imgp -x 800x0 -wrake ./public/images/
       - run: git add -A
       - run: "git diff-index --quiet HEAD || git commit -m 'perf(images): Оптимізовано зображення'"
+
+      # Створення мініатюр
+      - run: cp -r ./public/images/ ./public/thumbnails/
+      - run: imgp -x 300x0 -wrake ./public/thumbnails/
+      - run: git add -A
+      - run: "git diff-index --quiet HEAD || git commit -m 'perf(images): Згенеровано мініатюри'"
 
       # Публікація в production
       - run: git push origin main:production --force
