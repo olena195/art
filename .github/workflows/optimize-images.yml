@@ -3,29 +3,30 @@ on:
   push:
     branches:
       - main
-    paths:
-      - .github/workflows/optimize-images.yml
-      - public/images/**
 
 concurrency:
   group: prod-image-optimization
   cancel-in-progress: true
 
 jobs:
-  optimaze-uploads:
+  push-to-production-branch:
     environment:
       name: production
       url: https://kyivska-zefirka.netlify.app/
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - run: git config user.name github-actions
+      - run: git config user.email github-actions@github.com
+
+      # Оптимізація зображень
       - uses: actions/setup-python@v4
         with:
           python-version: '3.10'
       - run: sudo apt install imgp
       - run: imgp -x 800x0 -wrake ./public/images/
-      - run: git config user.name github-actions
-      - run: git config user.email github-actions@github.com
       - run: git add -A
       - run: "git diff-index --quiet HEAD || git commit -m 'perf(images): Оптимізовано зображення'"
+
+      # Публікація в production
       - run: git push origin main:production --force
