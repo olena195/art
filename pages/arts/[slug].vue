@@ -16,13 +16,15 @@ const pictures = computed(() => content.value ? Array.isArray(content.value.pict
   <main>
     <el-card tag="main" :body-style="{ padding: '0px' }">
 
-      <div style="padding: 14px">
-
-        <el-button size="small" type="success" v-for="fandomName of content.fandom">{{ fandomName }}</el-button>
-        <el-button size="small" type="danger" v-for="pairingName of content.pairing">{{ pairingName }}</el-button>
-        <el-button size="small" type="primary" v-for="tagName of content.tag">{{ tagName }}</el-button>
-
-      </div>
+      <template #header>
+        <div class="card-header">
+          <div>
+            <el-button size="small" type="success" v-for="fandomName of content.fandom">{{ fandomName }}</el-button>
+            <el-button size="small" type="danger" v-for="pairingName of content.pairing">{{ pairingName }}</el-button>
+            <el-button size="small" type="primary" v-for="tagName of content.tag">{{ tagName }}</el-button>
+          </div>
+        </div>
+      </template>
 
       <img v-for="pic of pictures" :src="pic" :key="pic" />
     </el-card>
