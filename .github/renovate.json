@@ -1,18 +1,12 @@
 {
   "extends": [
     "config:base",
-    "group:allNonMajor",
     ":semanticCommits",
-    ":automergeTypes",
-    ":disableDependencyDashboard",
+    ":semanticCommitTypeAll(deps)",
+    ":semanticCommitScopeDisabled",
     ":pinVersions",
-    ":semanticCommitType(deps)",
-    ":onlyNpm",
-    ":label(dependencies)",
-    "schedule:weekly"
-  ],
-  "baseBranches": [
-    "main"
-  ],
-  "bumpVersion": "patch"
+    ":automergeMinor",
+    ":automergeBranch",
+    ":onlyNpm"
+  ]
 }
