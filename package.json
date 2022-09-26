@@ -7,10 +7,10 @@
     "preview": "nuxt preview"
   },
   "devDependencies": {
-    "@iconify-prerendered/vue-ep": "0.12.1660284884",
+    "@iconify-prerendered/vue-ep": "0.13.1660284884",
     "@nuxt/content": "2.1.1",
     "nuxt": "3.0.0-rc.11",
-    "sass": "1.54.9",
+    "sass": "1.55.0",
     "unplugin-element-plus": "0.4.1"
   },
   "dependencies": {
