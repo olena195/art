@@ -17,7 +17,7 @@ const pictures = computed(() => content.value ? Array.isArray(content.value.pict
     <el-card tag="main" :body-style="{ padding: '0px' }">
 
       <template #header>
-        <div class="card-header">
+        <div class="card-header" v-if="content">
           <h1 v-if="content.description">{{content.description}}</h1>
           <div>
             <el-button size="small" type="success" v-for="fandomName of content.fandom">{{ fandomName }}</el-button>
