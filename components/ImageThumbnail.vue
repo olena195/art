@@ -1,7 +1,7 @@
 <template>
   <picture>
 <!--    <source :srcset="thumbnailSrc">-->
-    <img :src="src" :alt="alt || ''" />
+    <img src="https://fakeimg.pl/200x300" :alt="alt || ''" />
   </picture>
 
 </template>

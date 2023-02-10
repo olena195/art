@@ -1,26 +1,12 @@
 <script lang="ts" setup>
-import {provide, ref} from "#imports";
-import {ID_INJECTION_KEY} from 'element-plus';
-import {IconMenu} from '@iconify-prerendered/vue-ep'
-
-
-provide(ID_INJECTION_KEY, {
-  prefix: 100,
-  current: 0,
-});
+import {ref} from "#imports";
 
 const mobileOpen = ref(false);
 </script>
 <template>
   <div class="base-root">
 
-    <div class="backdrop" :class="{mobileOpen}" @click="mobileOpen = !mobileOpen"></div>
-    <div class="site-nav" :class="{mobileOpen}">
-      <button class="mobile-toggle" @click="mobileOpen = !mobileOpen">
-        <IconMenu class="mobile-toggle-icon"/>
-      </button>
-      <site-menu class="menu"/>
-    </div>
+    <site-menu class="menu"/>
 
     <div class="content-wrapper">
       <slot/>

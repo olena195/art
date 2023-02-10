@@ -1,5 +1,5 @@
 import {defineNuxtConfig} from 'nuxt/config'
-import ElementPlus from 'unplugin-element-plus/vite'
+// import ElementPlus from 'unplugin-element-plus/vite'
 
 
 // https://v3.nuxtjs.org/docs/directory-structure/nuxt.config
@@ -9,16 +9,8 @@ export default defineNuxtConfig({
   telemetry: false,
 
   // css
-  css: ['~/assets/scss/index.scss'],
+  // css: ['~/assets/scss/index.scss'],
 
-  // build
-  build: {
-    transpile: ['element-plus/es'],
-  },
-
-  vite: {
-    plugins: [ElementPlus()],
-  },
 
   typescript: {
     strict: true,
@@ -28,8 +20,14 @@ export default defineNuxtConfig({
   // build modules
   modules: [
     '@nuxt/content',
+    '@element-plus/nuxt',
   ],
-
-  // auto import components
-  components: true,
+  elementPlus: {
+    // imports: ['useLocale'],
+    injectionID: {prefix: 100, current: 1},
+    noStylesComponents: [
+      'el-card',
+      'el-menu-item',
+    ]
+  }
 })
