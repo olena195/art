@@ -4,25 +4,39 @@ definePageMeta({
   layout: 'base'
 })
 
+const TAXONOMY_TYPE = 'fandom'
 const route = useRoute()
+const pathWithoutEndSlash = route.fullPath.endsWith('/') ? route.fullPath.slice(0, -1) : route.fullPath
+
+const {data: taxonomy} = await useAsyncData(
+  pathWithoutEndSlash,
+  () => queryContent(pathWithoutEndSlash).where({
+    _path: {$eq: pathWithoutEndSlash}
+  })
+    .findOne()
+)
+
 
 const {data: posts} = await useAsyncData(
-  route.fullPath,
+  `content-${pathWithoutEndSlash}`,
   async () => {
-    const tax = await queryContent(route.fullPath).where({
-      _path: route.fullPath
-    })
-      .findOne()
 
-    if (!tax) {
+    if (!taxonomy.value) {
       return []
     }
 
     return queryContent('/').where({
-      fandom: {
-        $contains: tax.title
+      taxonomy: {
+        $ne: true
+      },
+      [TAXONOMY_TYPE]: {
+        $exists: true,
+        $contains: taxonomy.value.title
       }
     }).find()
+  },
+  {
+    watch: [taxonomy]
   }
 )
 </script>
