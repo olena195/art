@@ -5,12 +5,13 @@ definePageMeta({
 })
 
 const route = useRoute()
+const pathWithoutEndSlash = route.fullPath.endsWith('/') ? route.fullPath.slice(0,-1) : route.fullPath
 
 const {data: posts} = await useAsyncData(
-  route.fullPath,
+  pathWithoutEndSlash,
   async () => {
-    const tax = await queryContent(route.fullPath).where({
-      _path: route.fullPath
+    const tax = await queryContent(pathWithoutEndSlash).where({
+      _path: pathWithoutEndSlash
     })
       .findOne()
 

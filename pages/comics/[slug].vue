@@ -6,7 +6,9 @@ definePageMeta({
 })
 
 const route = useRoute()
-const {data: content} = await useAsyncData(route.path, () => queryContent(route.path).where({_path: route.path}).findOne());
+const pathWithoutEndSlash = route.fullPath.endsWith('/') ? route.fullPath.slice(0,-1) : route.fullPath
+
+const {data: content} = await useAsyncData(pathWithoutEndSlash, () => queryContent(route.path).where({_path: pathWithoutEndSlash}).findOne());
 const pictures = computed(() => content.value ? Array.isArray(content.value.pictures) ? content.value.pictures : [content.value.pictures] : [])
 </script>
 
