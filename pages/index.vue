@@ -2,7 +2,10 @@
 
 definePageMeta({
   layout: 'base',
-  title: 'Всі комікси'
+})
+
+useHead({
+  title: 'Київська Зефірка'
 })
 
 const {data: posts} = await useAsyncData(
