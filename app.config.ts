@@ -1,9 +1,15 @@
 export default defineAppConfig({
-  title: 'Hello Nuxt',
-  theme: {
-    dark: true,
-    colors: {
-      primary: '#ff0000'
-    }
+  content: {
+    types: [
+      {slug: 'arts', title: 'Малюнки'},
+      {slug: 'comics', title: 'Комікси'},
+      {slug: 'fanfis', title: 'Фанфіки'},
+    ],
+
+    taxonomies: [
+      {slug: 'fandom', title: 'Фандоми'},
+      {slug: 'pairing', title: 'Пейрінги'},
+      {slug: 'tags', title: 'Теги'},
+    ]
   }
 })

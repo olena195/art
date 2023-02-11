@@ -10,46 +10,9 @@ const mobileOpen = ref(false);
     </button>
 
 
-    <div class="site-nav" :class="{mobileOpen}">
-      <div class="bg-light-50 py-4">
-        START
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet animi dignissimos dolores ducimus earum facere, iure laboriosam libero magnam magni nesciunt optio qui, quia repellat repellendus repudiandae totam voluptate voluptatum?
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet animi dignissimos dolores ducimus earum facere, iure laboriosam libero magnam magni nesciunt optio qui, quia repellat repellendus repudiandae totam voluptate voluptatum?
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet animi dignissimos dolores ducimus earum facere, iure laboriosam libero magnam magni nesciunt optio qui, quia repellat repellendus repudiandae totam voluptate voluptatum?
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet animi dignissimos dolores ducimus earum facere, iure laboriosam libero magnam magni nesciunt optio qui, quia repellat repellendus repudiandae totam voluptate voluptatum?
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet animi dignissimos dolores ducimus earum facere, iure laboriosam libero magnam magni nesciunt optio qui, quia repellat repellendus repudiandae totam voluptate voluptatum?
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet animi dignissimos dolores ducimus earum facere, iure laboriosam libero magnam magni nesciunt optio qui, quia repellat repellendus repudiandae totam voluptate voluptatum?
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet animi dignissimos dolores ducimus earum facere, iure laboriosam libero magnam magni nesciunt optio qui, quia repellat repellendus repudiandae totam voluptate voluptatum?
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet animi dignissimos dolores ducimus earum facere, iure laboriosam libero magnam magni nesciunt optio qui, quia repellat repellendus repudiandae totam voluptate voluptatum?
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet animi dignissimos dolores ducimus earum facere, iure laboriosam libero magnam magni nesciunt optio qui, quia repellat repellendus repudiandae totam voluptate voluptatum?
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet animi dignissimos dolores ducimus earum facere, iure laboriosam libero magnam magni nesciunt optio qui, quia repellat repellendus repudiandae totam voluptate voluptatum?
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet animi dignissimos dolores ducimus earum facere, iure laboriosam libero magnam magni nesciunt optio qui, quia repellat repellendus repudiandae totam voluptate voluptatum?
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet animi dignissimos dolores ducimus earum facere, iure laboriosam libero magnam magni nesciunt optio qui, quia repellat repellendus repudiandae totam voluptate voluptatum?
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet animi dignissimos dolores ducimus earum facere, iure laboriosam libero magnam magni nesciunt optio qui, quia repellat repellendus repudiandae totam voluptate voluptatum?
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet animi dignissimos dolores ducimus earum facere, iure laboriosam libero magnam magni nesciunt optio qui, quia repellat repellendus repudiandae totam voluptate voluptatum?
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet animi dignissimos dolores ducimus earum facere, iure laboriosam libero magnam magni nesciunt optio qui, quia repellat repellendus repudiandae totam voluptate voluptatum?
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet animi dignissimos dolores ducimus earum facere, iure laboriosam libero magnam magni nesciunt optio qui, quia repellat repellendus repudiandae totam voluptate voluptatum?
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet animi dignissimos dolores ducimus earum facere, iure laboriosam libero magnam magni nesciunt optio qui, quia repellat repellendus repudiandae totam voluptate voluptatum?
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet animi dignissimos dolores ducimus earum facere, iure laboriosam libero magnam magni nesciunt optio qui, quia repellat repellendus repudiandae totam voluptate voluptatum?
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet animi dignissimos dolores ducimus earum facere, iure laboriosam libero magnam magni nesciunt optio qui, quia repellat repellendus repudiandae totam voluptate voluptatum?
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet animi dignissimos dolores ducimus earum facere, iure laboriosam libero magnam magni nesciunt optio qui, quia repellat repellendus repudiandae totam voluptate voluptatum?
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet animi dignissimos dolores ducimus earum facere, iure laboriosam libero magnam magni nesciunt optio qui, quia repellat repellendus repudiandae totam voluptate voluptatum?
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet animi dignissimos dolores ducimus earum facere, iure laboriosam libero magnam magni nesciunt optio qui, quia repellat repellendus repudiandae totam voluptate voluptatum?
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet animi dignissimos dolores ducimus earum facere, iure laboriosam libero magnam magni nesciunt optio qui, quia repellat repellendus repudiandae totam voluptate voluptatum?
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet animi dignissimos dolores ducimus earum facere, iure laboriosam libero magnam magni nesciunt optio qui, quia repellat repellendus repudiandae totam voluptate voluptatum?
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet animi dignissimos dolores ducimus earum facere, iure laboriosam libero magnam magni nesciunt optio qui, quia repellat repellendus repudiandae totam voluptate voluptatum?
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet animi dignissimos dolores ducimus earum facere, iure laboriosam libero magnam magni nesciunt optio qui, quia repellat repellendus repudiandae totam voluptate voluptatum?
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet animi dignissimos dolores ducimus earum facere, iure laboriosam libero magnam magni nesciunt optio qui, quia repellat repellendus repudiandae totam voluptate voluptatum?
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet animi dignissimos dolores ducimus earum facere, iure laboriosam libero magnam magni nesciunt optio qui, quia repellat repellendus repudiandae totam voluptate voluptatum?
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet animi dignissimos dolores ducimus earum facere, iure laboriosam libero magnam magni nesciunt optio qui, quia repellat repellendus repudiandae totam voluptate voluptatum?
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet animi dignissimos dolores ducimus earum facere, iure laboriosam libero magnam magni nesciunt optio qui, quia repellat repellendus repudiandae totam voluptate voluptatum?
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet animi dignissimos dolores ducimus earum facere, iure laboriosam libero magnam magni nesciunt optio qui, quia repellat repellendus repudiandae totam voluptate voluptatum?
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet animi dignissimos dolores ducimus earum facere, iure laboriosam libero magnam magni nesciunt optio qui, quia repellat repellendus repudiandae totam voluptate voluptatum?
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet animi dignissimos dolores ducimus earum facere, iure laboriosam libero magnam magni nesciunt optio qui, quia repellat repellendus repudiandae totam voluptate voluptatum?
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet animi dignissimos dolores ducimus earum facere, iure laboriosam libero magnam magni nesciunt optio qui, quia repellat repellendus repudiandae totam voluptate voluptatum?
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet animi dignissimos dolores ducimus earum facere, iure laboriosam libero magnam magni nesciunt optio qui, quia repellat repellendus repudiandae totam voluptate voluptatum?
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet animi dignissimos dolores ducimus earum facere, iure laboriosam libero magnam magni nesciunt optio qui, quia repellat repellendus repudiandae totam voluptate voluptatum?
-        END
+    <div class="site-nav sm:bg-light-50 <sm:(flex flex-col-reverse)" :class="{mobileOpen}" @click.stop="mobileOpen = false">
+      <div class="bg-light-50 py-4" @click.stop>
+        <SiteMenu/>
       </div>
     </div>
 
@@ -89,7 +52,7 @@ const mobileOpen = ref(false);
 }
 
 /* MOBILE */
-@media (max-width: 700px) {
+@media (max-width: 640px) {
   .base-root {
     --toggle-nav-height: 3rem;
     --animation-duration: .3s;
@@ -115,7 +78,7 @@ const mobileOpen = ref(false);
 
 
 /* DESKTOP */
-@media (min-width: 700px) {
+@media (min-width: 640px) {
   .mobile-toggle {
     display: none;
   }
@@ -124,16 +87,8 @@ const mobileOpen = ref(false);
     min-width: 250px;
   }
 
-  .backdrop {
-    display: none;
-  }
-
   .base-root {
     flex-direction: row;
-  }
-
-  .menu {
-    height: 100%;
   }
 }
 </style>
