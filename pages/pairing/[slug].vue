@@ -16,6 +16,10 @@ const {data: taxonomy} = await useAsyncData(
     .findOne()
 )
 
+useHead({
+  title: () => taxonomy.value?.title,
+  titleTemplate: t => (t ? `Парочка: ${t} — ` : '') + `Київська Зефірка`
+})
 
 const {data: posts} = await useAsyncData(
   `content-${TAXONOMY_TYPE}-${taxonomy.value?.title}${pathWithoutEndSlash}`,

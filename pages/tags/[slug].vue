@@ -3,6 +3,8 @@ definePageMeta({
   layout: 'base'
 })
 
+
+
 const TAXONOMY_TYPE = 'tags'
 const route = useRoute()
 const pathWithoutEndSlash = route.fullPath.endsWith('/') ? route.fullPath.slice(0, -1) : route.fullPath
@@ -14,6 +16,13 @@ const {data: taxonomy} = await useAsyncData(
   })
     .findOne()
 )
+
+
+useHead({
+  title: () => taxonomy.value?.title,
+  titleTemplate: t => (t ? `Теґ: ${t} — ` : '') + `Київська Зефірка`
+})
+
 
 
 const {data: posts} = await useAsyncData(

@@ -17,6 +17,12 @@ const {data: taxonomy} = await useAsyncData(
 )
 
 
+useHead({
+  title: () => taxonomy.value?.title,
+  titleTemplate: t => (t ? `Фанхата: ${t} — ` : '') + `Київська Зефірка`
+})
+
+
 const {data: posts} = await useAsyncData(
   `content-${pathWithoutEndSlash}`,
   async () => {

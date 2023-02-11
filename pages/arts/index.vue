@@ -1,7 +1,12 @@
 <script setup lang="ts">
 
 definePageMeta({
-  layout: 'base'
+  layout: 'base',
+})
+
+useHead({
+  title: 'Всі малюнки',
+  titleTemplate: t => `${t} - Київська Зефірка`
 })
 
 const {data: posts} = await useAsyncData(

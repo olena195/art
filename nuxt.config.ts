@@ -6,6 +6,7 @@ export default defineNuxtConfig({
 
   telemetry: false,
 
+
   css: ['assets/global.css'],
 
   typescript: {
