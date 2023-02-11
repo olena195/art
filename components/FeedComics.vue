@@ -27,9 +27,9 @@ const preview = computed(() => Array.isArray(props.pictures) ? props.pictures[0]
 
 
 <style scoped>
-
-
-
+div {
+  max-width: 415px;
+}
 img {
   width: 100%;
   display: block;
