@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import {computed, definePageMeta, queryContent, useAsyncData, useRoute} from "#imports";
-import {ElButton, ElCard} from 'element-plus';
 
 definePageMeta({
   layout: 'base',

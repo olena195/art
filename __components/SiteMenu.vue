@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import { computed, fetchContentNavigation, useAsyncData } from "#imports";
-import { ElMenu, ElMenuItem, ElSubMenu } from "element-plus";
 
 const navConfig = new Map([
   ['/arts', {title: "Малюнки", showSubmenu: false}],

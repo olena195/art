@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import {computed, queryContent, useAsyncData} from "#imports";
-import {ElTag} from "element-plus";
 
 const props = defineProps<{
   fandom?: string[]

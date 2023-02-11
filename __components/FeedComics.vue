@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import {ElCard} from 'element-plus';
-import {computed} from "#imports";
 
 const props = defineProps<{
   fandom?: string[]
