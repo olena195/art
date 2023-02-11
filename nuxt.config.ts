@@ -1,24 +1,23 @@
 import {defineNuxtConfig} from 'nuxt/config'
-import ElementPlus from 'unplugin-element-plus/vite'
 
+const icons = ['32', '128', '180', '192']
 
 // https://v3.nuxtjs.org/docs/directory-structure/nuxt.config
 export default defineNuxtConfig({
-  ssr: true,
-  target: 'static',
+
   telemetry: false,
-
-  // css
-  css: ['~/assets/scss/index.scss'],
-
-  // build
-  build: {
-    transpile: ['element-plus/es'],
+  // <link rel="icon" href="/path/to/favicon-128.png" sizes="128x128">
+  app: {
+    head: {
+      link: [
+        ...icons.map(s => {
+          return ({rel: 'icon', href: `/favicon-${s}.png`, sizes: `${s}x${s}`});
+        })
+      ]
+    }
   },
 
-  vite: {
-    plugins: [ElementPlus()],
-  },
+  css: ['assets/global.css'],
 
   typescript: {
     strict: true,
@@ -28,8 +27,6 @@ export default defineNuxtConfig({
   // build modules
   modules: [
     '@nuxt/content',
+    'nuxt-windicss',
   ],
-
-  // auto import components
-  components: true,
 })

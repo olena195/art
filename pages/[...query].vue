@@ -1,11 +1,14 @@
 <script setup lang="ts">
-import { definePageMeta } from "#imports";
 
 definePageMeta({
   layout: 'base'
 })
-</script>
+
+const { data } = await useAsyncData('all', () => queryContent().find())</script>
 
 <template>
-  <Feed/>
+  <pre>
+    ALL in [...query].vue
+    {{data || null}}
+  </pre>
 </template>

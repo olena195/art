@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import {computed, definePageMeta, queryContent, useAsyncData, useRoute} from "#imports";
-import {ElButton, ElCard} from 'element-plus';
 
 definePageMeta({
   layout: 'base',
@@ -8,31 +6,23 @@ definePageMeta({
 })
 
 const route = useRoute()
-const {data: content} = await useAsyncData(route.path, () => queryContent(route.path).where({_path: route.path}).findOne());
+const pathWithoutEndSlash = route.fullPath.endsWith('/') ? route.fullPath.slice(0,-1) : route.fullPath
+
+const {data: content} = await useAsyncData(pathWithoutEndSlash, () => queryContent(route.path).where({_path: pathWithoutEndSlash}).findOne());
 const pictures = computed(() => content.value ? Array.isArray(content.value.pictures) ? content.value.pictures : [content.value.pictures] : [])
 </script>
 
 <template>
-  <main>
-    <el-card tag="main" :body-style="{ padding: '0px' }">
+  <main v-if="content">
+    <div class="card-header">
+      <h1 class="p-3 mb-4 text-2xl  " v-if="content.description">{{ content.description }}</h1>
+      <TaxonomyList class="p-2" v-bind="content"/>
+    </div>
 
-      <template #header>
-        <div class="card-header" v-if="content">
-          <h1 v-if="content.description">{{content.description}}</h1>
-          <div>
-            <el-button size="small" type="success" v-for="fandomName of content.fandom">{{ fandomName }}</el-button>
-            <el-button size="small" type="danger" v-for="pairingName of content.pairing">{{ pairingName }}</el-button>
-            <el-button size="small" type="primary" v-for="tagName of content.tag">{{ tagName }}</el-button>
-          </div>
-        </div>
-      </template>
-
-
-      <a title="Відкрити в повному розмірі" target="_blank" v-for="pic of pictures" :key="pic"
-         :href="'https://github.com/olena195/blog_kyivska_zefirka/raw/main/public'+pic">
-        <img :src="pic"/>
-      </a>
-    </el-card>
+    <a title="Відкрити в повному розмірі" target="_blank" v-for="pic of pictures" :key="pic"
+       :href="'https://github.com/olena195/blog_kyivska_zefirka/raw/main/public'+pic">
+      <img :src="pic"/>
+    </a>
   </main>
 </template>
 

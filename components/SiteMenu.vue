@@ -1,58 +1,52 @@
 <script lang="ts" setup>
-import { computed, fetchContentNavigation, useAsyncData } from "#imports";
-import { ElMenu, ElMenuItem, ElSubMenu } from "element-plus";
 
-const navConfig = new Map([
-  ['/arts', {title: "Малюнки", showSubmenu: false}],
-  ['/comics', {title: "Комікси", showSubmenu: false}],
-  ['/fandom', {title: "Фандоми", showSubmenu: true}],
-  ['/fanfics', {title: "Фанфіки", showSubmenu: false}],
-  ['/pairing', {title: "Перінги", showSubmenu: true}],
-  ['/tags', {title: "Теги", showSubmenu: true}],
-]);
-type MenuItem = { title?: string, navTitle?: string, _path: string, children?: MenuItem[] }
-const {data} = await useAsyncData<MenuItem[]>('navigation', () => {
+
+const {data} = await useAsyncData('navigation', () => {
   return fetchContentNavigation();
 });
 
-const navigation = computed(() => (data.value || []).map(l => {
-  const config = navConfig.get(l._path);
-  if (!config) {
-    return l;
-  }
+const config = useAppConfig()
 
-  l.title = config.title || l.title;
-  l.children = config.showSubmenu ? l.children : [];
-  return l;
-}));
+const existingTypes = computed(() => config.content.types.filter(t => (data.value || []).find(n => n._path === `/${t.slug}`)))
+const existingTaxonomies = computed(
+  () =>
+  config.content.taxonomies.reduce((taxs, item) => {
+    const navItem = (data.value || []).find(n => n._path === `/${item.slug}`)
+    if (navItem) {
+      taxs.push({...item, nav: navItem})
+    }
+
+    return taxs
+  }, [])
+)
+
+
 </script>
 
 <template>
-  <el-menu
-    :default-active="$route.path"
-    :router="true"
-    class="el-menu-demo"
-    mode="vertical"
-  >
-    <template v-for="link of navigation">
-      <el-menu-item v-if="!link.children?.length" :index="link._path">
-        <nuxt-link :to="link._path">{{ link.navTitle || link.title }}</nuxt-link>
-      </el-menu-item>
-      <el-sub-menu v-else :index="link._path">
-        <template #title>{{ link.navTitle || link.title }}</template>
-        <el-menu-item v-for="childLink of link.children"
-                      :key="childLink._path"
-                      :index="childLink._path">
-          <nuxt-link :to="childLink._path">{{ childLink.navTitle || childLink.title }}</nuxt-link>
-        </el-menu-item>
-      </el-sub-menu>
-    </template>
-  </el-menu>
+  <div class="vstack gap-3">
+    <div class="vstack ">
+      <nuxt-link prefetch exact-active-class="bg-sky-400 hover:bg-sky-300" class="px-4 py-3 hover:bg-sky-100"
+                 v-for="link of existingTypes" :to="'/'+link.slug" :key="link.slug">{{ link.title }}
+      </nuxt-link>
+    </div>
+
+    <div class="vstack ">
+    <details v-for="taxonomy of existingTaxonomies" :key="taxonomy.slug" >
+      <summary class="px-4 py-3 hover:bg-sky-100">{{taxonomy.title}}</summary>
+      <div class="pl-3 vstack ">
+        <nuxt-link exact-active-class="bg-sky-400 hover:bg-sky-300" class="px-4 py-3 hover:bg-sky-100"
+                   v-for="link of taxonomy.nav.children" :to="link._path" :key="link._path">{{ link.title }}
+        </nuxt-link>
+      </div>
+    </details>
+  </div>
+  </div>
 </template>
 
 <style scoped>
-.el-menu-item a {
-  text-decoration: none;
-  color: inherit;
-}
+/*.el-menu-item a {*/
+/*  text-decoration: none;*/
+/*  color: inherit;*/
+/*}*/
 </style>

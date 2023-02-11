@@ -1,5 +1,3 @@
-//@use "element-plus/dist/index.css";
-
 *, *:before, *:after {
   box-sizing: border-box;
 }
@@ -17,10 +15,4 @@ body {
     Arial,
     sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-
-}
-
-a {
-	font-weight: 400;
-	color: var(--el-color-primary);
 }

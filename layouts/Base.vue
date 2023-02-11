@@ -1,38 +1,31 @@
 <script lang="ts" setup>
-import {provide, ref} from "#imports";
-import {ID_INJECTION_KEY} from 'element-plus';
-import {IconMenu} from '@iconify-prerendered/vue-ep'
-
-
-provide(ID_INJECTION_KEY, {
-  prefix: 100,
-  current: 0,
-});
-
+import {IconRoundArrowUpward} from '@iconify-prerendered/vue-ic'
 const mobileOpen = ref(false);
+
+watch(() => useRoute().path, () => mobileOpen.value = false)
 </script>
 <template>
   <div class="base-root">
 
-    <div class="backdrop" :class="{mobileOpen}" @click="mobileOpen = !mobileOpen"></div>
-    <div class="site-nav" :class="{mobileOpen}">
-      <button class="mobile-toggle" @click="mobileOpen = !mobileOpen">
-        <IconMenu class="mobile-toggle-icon"/>
-      </button>
-      <site-menu class="menu"/>
+    <button class="mobile-toggle fixed bottom-0 bg-light-50" @click="mobileOpen = !mobileOpen">
+      <IconRoundArrowUpward class="transition-transform duration-300" :class="{'transform rotate-180': mobileOpen}"/>
+    </button>
+
+
+    <div class="site-nav sm:bg-light-50 <sm:(flex flex-col-reverse)" :class="{mobileOpen}" @click.stop="mobileOpen = false">
+      <div class="bg-light-50 py-4" @click.stop>
+        <SiteMenu/>
+      </div>
     </div>
 
-    <div class="content-wrapper">
+
+    <div class="content-wrapper p-2 w-full">
       <slot/>
     </div>
   </div>
 </template>
 
 <style scoped>
-
-.content-wrapper {
-  width: 100%;
-}
 
 .base-root {
   min-height: 100vh;
@@ -43,30 +36,25 @@ const mobileOpen = ref(false);
 .site-nav {
   width: 100%;
   max-width: 250px;
-  background: white;
+  height: 100vh;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+.mobile-toggle {
+  width: 100%;
+  height: var(--toggle-nav-height);
+  border: none;
+  font-size: 1.3rem;
+  z-index: 10;
 }
 
 /* MOBILE */
-@media (max-width: 700px) {
+@media (max-width: 640px) {
   .base-root {
     --toggle-nav-height: 3rem;
     --animation-duration: .3s;
     padding-block-end: var(--toggle-nav-height);
-  }
-
-  .mobile-toggle {
-    width: 100%;
-    height: var(--toggle-nav-height);
-    border: none;
-    background: none;
-    font-size: 1.3rem;
-    cursor: pointer;
-  }
-
-  .mobile-toggle-icon {
-    height: 50%;
-    width: auto;
-    opacity: 0.5;
   }
 
   .site-nav {
@@ -74,55 +62,38 @@ const mobileOpen = ref(false);
     position: fixed;
     max-width: 100%;
     border-top: 1px solid var(--el-menu-border-color);
-    bottom: 0;
+    bottom: var(--toggle-nav-height);
+    height: calc(100vh - var(--toggle-nav-height));
     transition: transform var(--animation-duration);
     z-index: 5;
+    padding-block-start: calc(60vh - var(--toggle-nav-height));
   }
 
   .site-nav:not(.mobileOpen) {
-    transform: translateY(calc(100% - var(--toggle-nav-height)))
-  }
-
-  .backdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: black;
-    opacity: 0;
-    z-index: 4;
-    pointer-events: none;
-    transition: opacity var(--animation-duration);
-  }
-
-  .backdrop.mobileOpen {
-    pointer-events: auto;
-    opacity: 0.5;
+    transform: translateY(100%)
   }
 }
 
 
 /* DESKTOP */
-@media (min-width: 700px) {
+@media (min-width: 640px) {
   .mobile-toggle {
     display: none;
   }
+
+  .content-wrapper {
+    overflow-y: auto;
+    height: 100vh;
+  }
+
+
 
   .site-nav {
     min-width: 250px;
   }
 
-  .backdrop {
-    display: none;
-  }
-
   .base-root {
     flex-direction: row;
-  }
-
-  .menu {
-    height: 100%;
   }
 }
 </style>

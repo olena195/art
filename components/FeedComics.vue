@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import {ElCard} from 'element-plus';
-import {computed} from "#imports";
 
 const props = defineProps<{
   fandom?: string[]
@@ -16,34 +14,25 @@ const preview = computed(() => Array.isArray(props.pictures) ? props.pictures[0]
 </script>
 
 <template>
-  <el-card  class="link-card" :body-style="{ padding: '0px' }">
-    <nuxt-link :to="_path">
-      <ImageThumbnail :src="preview" :alt="description"/>
-    </nuxt-link>
-
-    <taxonomy-list style="padding: 14px"
-                   :fandom="fandom"
-                   :pairing="pairing"
-                   :tags="tags"
-    />
-  </el-card>
+<div class="bg-light-50">
+  <nuxt-link :to="_path">
+    <img :src="preview" class="object-cover" :alt="description || ''">
+  </nuxt-link>
+  <TaxonomyList class="p-3" :fandom="fandom"
+                 :pairing="pairing"
+                 :tags="tags"
+  />
+</div>
 </template>
 
 
 <style scoped>
-.link-card {
-  text-decoration: inherit;
-  color: inherit;
-  max-width: 16rem;
-  width: 100%;
-  display: block;
-  height: min-content;
-
+div {
+  max-width: 415px;
 }
-
-
 img {
   width: 100%;
   display: block;
+  aspect-ratio: 2280/3460;
 }
 </style>
