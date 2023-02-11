@@ -4,18 +4,22 @@ definePageMeta({
 })
 
 const route = useRoute()
-const pathWithoutEndSlash = route.fullPath.endsWith('/') ? route.fullPath.slice(0,-1) : route.fullPath
+const pathWithoutEndSlash = route.fullPath.endsWith('/') ? route.fullPath.slice(0, -1) : route.fullPath
 
-const {data: taxonomy} = await useAsyncData('taxonomy-'+pathWithoutEndSlash, () => queryContent(pathWithoutEndSlash).where({
-  _path: {$eq: pathWithoutEndSlash}
-})
-  .findOne())
+const {data: taxonomy} = await useAsyncData(
+  'taxonomy-' + pathWithoutEndSlash,
+  () => queryContent(pathWithoutEndSlash).where({
+    _path: {$eq: pathWithoutEndSlash}
+  })
+    .findOne()
+)
+
 
 const {data: posts} = await useAsyncData(
-  'content-'+pathWithoutEndSlash,
+  'content-' + (taxonomy.value?.title) + pathWithoutEndSlash,
   async () => {
 
-    if (!taxonomy) {
+    if (!taxonomy.value) {
       return []
     }
 
@@ -25,16 +29,19 @@ const {data: posts} = await useAsyncData(
       },
       tags: {
         $exists: true,
-        $contains: taxonomy.title
+        $contains: taxonomy.value.title
       }
     }).find()
+  },
+  {
+    watch: [taxonomy]
   }
 )
 </script>
 
 <template>
-  <pre>taxonomy: {{taxonomy}}</pre>
-  <pre>posts: {{posts}}</pre>
+  <pre>taxonomy: {{ taxonomy }}</pre>
+  <pre>posts: {{ posts }}</pre>
   <div class="feed-container" role="feed" v-if="posts && posts.length">
     <FeedComics v-for="post of posts" :key="post._path" v-bind="post"/>
   </div>
