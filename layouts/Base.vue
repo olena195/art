@@ -1,6 +1,8 @@
 <script lang="ts" setup>
 import {IconRoundArrowUpward} from '@iconify-prerendered/vue-ic'
 const mobileOpen = ref(false);
+
+watch(() => useRoute().path, () => mobileOpen.value = false)
 </script>
 <template>
   <div class="base-root">
