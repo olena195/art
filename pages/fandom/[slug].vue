@@ -19,7 +19,7 @@ const {data: taxonomy} = await useAsyncData(
 
 useHead({
   title: () => taxonomy.value?.title,
-  titleTemplate: t => (t ? `Фанхата: ${t} — ` : '') + `Київська Зефірка`
+  titleTemplate: t => (t ? `Фанхата: ${t} — ` : '') + `Київська Зефірка`,
 })
 
 
