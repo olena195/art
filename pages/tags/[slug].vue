@@ -50,7 +50,7 @@ const {data: posts} = await useAsyncData(
 </script>
 
 <template>
-  <h1 class="mb-8 text-6xl font-thin" v-if="taxonomy">Теґ: {{taxonomy.title}}</h1>
+  <h1 class="mb-8 text-5xl font-thin break-words" v-if="taxonomy">Теґ: {{taxonomy.title}}</h1>
 
   <div class="feed-container" role="feed" v-if="posts && posts.length">
     <FeedComics v-for="post of posts" :key="post._path" v-bind="post"/>
