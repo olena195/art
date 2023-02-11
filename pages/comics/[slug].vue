@@ -15,7 +15,7 @@ const pictures = computed(() => content.value ? Array.isArray(content.value.pict
 <template>
   <main v-if="content">
     <div class="card-header">
-      <h1 v-if="content.description">{{ content.description }}</h1>
+      <h1 class="p-3 mb-4 text-2xl  " v-if="content.description">{{ content.description }}</h1>
       <TaxonomyList class="p-2" v-bind="content"/>
     </div>
 

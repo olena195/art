@@ -16,7 +16,7 @@ const preview = computed(() => Array.isArray(props.pictures) ? props.pictures[0]
 <template>
 <div class="bg-light-50">
   <nuxt-link :to="_path">
-    <img :src="preview" class="object-cover" alt="">
+    <img :src="preview" class="object-cover" :alt="description || ''">
   </nuxt-link>
   <TaxonomyList class="p-3" :fandom="fandom"
                  :pairing="pairing"
