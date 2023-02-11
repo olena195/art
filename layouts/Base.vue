@@ -27,6 +27,7 @@ const mobileOpen = ref(false);
 
 .content-wrapper {
   width: 100%;
+  overflow-x: auto;
 }
 
 .base-root {
@@ -82,6 +83,13 @@ const mobileOpen = ref(false);
   .mobile-toggle {
     display: none;
   }
+
+  .content-wrapper {
+    overflow-y: auto;
+    height: 100vh;
+  }
+
+
 
   .site-nav {
     min-width: 250px;
