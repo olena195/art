@@ -21,7 +21,7 @@ const pictures = computed(() => content.value ? Array.isArray(content.value.pict
 
     <a title="Відкрити в повному розмірі" target="_blank" v-for="pic of pictures" :key="pic"
        :href="'https://github.com/olena195/blog_kyivska_zefirka/raw/main/public'+pic">
-      <img :src="'https://fakeimg.pl/100x300'"/>
+      <img :src="pic"/>
     </a>
   </main>
 </template>

@@ -19,7 +19,7 @@ watch(() => useRoute().path, () => mobileOpen.value = false)
     </div>
 
 
-    <div class="content-wrapper">
+    <div class="content-wrapper p-2 w-full">
       <slot/>
     </div>
   </div>
