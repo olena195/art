@@ -11,23 +11,16 @@ const pictures = computed(() => content.value ? Array.isArray(content.value.pict
 </script>
 
 <template>
-  <main>
-    <el-card tag="main" :body-style="{ padding: '0px' }">
-      <template #header>
-        <div class="card-header">
-          <div>
-            <el-button size="small" type="success" v-for="fandomName of content.fandom">{{ fandomName }}</el-button>
-            <el-button size="small" type="danger" v-for="pairingName of content.pairing">{{ pairingName }}</el-button>
-            <el-button size="small" type="primary" v-for="tagName of content.tag">{{ tagName }}</el-button>
-          </div>
-        </div>
-      </template>
+  <main v-if="content">
+    <div class="card-header">
+      <h1 v-if="content.description">{{ content.description }}</h1>
+      <TaxonomyList class="p-2" v-bind="content"/>
+    </div>
 
-      <a title="Відкрити в повному розмірі" target="_blank" v-for="pic of pictures" :key="pic"
-         :href="'https://github.com/olena195/blog_kyivska_zefirka/raw/main/public'+pic">
-        <img :src="pic"/>
-      </a>
-    </el-card>
+    <a title="Відкрити в повному розмірі" target="_blank" v-for="pic of pictures" :key="pic"
+       :href="'https://github.com/olena195/blog_kyivska_zefirka/raw/main/public'+pic">
+      <img :src="pic"/>
+    </a>
   </main>
 </template>
 
