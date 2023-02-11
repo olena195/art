@@ -25,11 +25,6 @@ const mobileOpen = ref(false);
 
 <style scoped>
 
-.content-wrapper {
-  width: 100%;
-  overflow-x: auto;
-}
-
 .base-root {
   min-height: 100vh;
   display: flex;
