@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 definePageMeta({
   layout: 'base'
 })
@@ -7,21 +6,26 @@ definePageMeta({
 const route = useRoute()
 const pathWithoutEndSlash = route.fullPath.endsWith('/') ? route.fullPath.slice(0,-1) : route.fullPath
 
-const {data: posts} = await useAsyncData(
-  pathWithoutEndSlash,
-  async () => {
-    const tax = await queryContent(pathWithoutEndSlash).where({
-      _path: pathWithoutEndSlash
-    })
-      .findOne()
+const {data: taxonomy} = await useAsyncData('taxonomy-'+pathWithoutEndSlash, () => queryContent(pathWithoutEndSlash).where({
+  _path: {$eq: pathWithoutEndSlash}
+})
+  .findOne())
 
-    if (!tax) {
+const {data: posts} = await useAsyncData(
+  'content-'+pathWithoutEndSlash,
+  async () => {
+
+    if (!taxonomy) {
       return []
     }
 
     return queryContent('/').where({
+      taxonomy: {
+        $ne: true
+      },
       tags: {
-        $contains: tax.title
+        $exists: true,
+        $contains: taxonomy.title
       }
     }).find()
   }
@@ -29,6 +33,8 @@ const {data: posts} = await useAsyncData(
 </script>
 
 <template>
+  <pre>taxonomy: {{taxonomy}}</pre>
+  <pre>posts: {{posts}}</pre>
   <div class="feed-container" role="feed" v-if="posts && posts.length">
     <FeedComics v-for="post of posts" :key="post._path" v-bind="post"/>
   </div>
