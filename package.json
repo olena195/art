@@ -11,6 +11,6 @@
     "@nuxt/content": "2.4.3",
     "nuxt": "3.2.0",
     "nuxt-windicss": "2.6.0",
-    "typescript": "4.9.5"
+    "typescript": "5.1.6"
   }
 }
