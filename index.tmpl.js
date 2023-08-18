@@ -1,92 +1,28 @@
-import * as path from "https://deno.land/std/path/mod.ts";
+export default function* ({ get_images }) {
 
-const ROOT = path.resolve('./img')
+  const dirs = new Set();
 
-/**
- *
- * @param {string} fileOrDirPath
- */
-function normalizeEntryPath(fileOrDirPath) {
-  if (fileOrDirPath === ROOT) {
-    return '/'
-  }
-  const url = fileOrDirPath.replace(ROOT, '').replaceAll('\\', '/')
-  return url.endsWith('/') ? url : `${url}/`
-}
+  for (const image of get_images()) {
+    const mayBeOptimized = !image.endsWith('.gif')
+    const imagickAttr = mayBeOptimized ? 'imagick="avif webp png 600"' : ''
 
-/**
- *
- * @param {string} dirPath
- * @returns {any}
- */
-async function* getDirEntry(dirPath) {
-  const childPages = []
-  for await (const dirEntry of Deno.readDir(dirPath)) {
+    dirs.add(image.split('/').slice(0, -1).join('/'))
 
-    if (dirEntry.name.startsWith('.') || dirEntry.name.startsWith('_')) {
-      continue
-    }
-
-    const childPath = path.resolve(dirPath, dirEntry.name)
-
-    if (dirEntry.isDirectory) {
-      yield * getDirEntry(childPath)
-      childPages.push({
-        url: normalizeEntryPath(childPath),
-        content: dirPath,
-        isDirectory: true,
-        name: dirEntry.name,
-
-        layout: 'dir.tmpl.js'
-      })
-    } else {
-      const childEntry = {
-        url: normalizeEntryPath(childPath),
-        content: childPath,
-        isDirectory: false
-      }
-
-      childPages.push(childEntry)
-
-      yield childEntry
+    yield {
+      layout: 'withMenu.jsx',
+      image,
+      url: image + ".html",
+      addToMenu: false,
+      content: `<img alt="${image}" src="${image}" ${imagickAttr} />`
     }
   }
 
-  yield {
-    url: normalizeEntryPath(dirPath),
-    childPages,
-    content: dirPath,
-    isDirectory: true,
-    name: path.basename(dirPath),
-
-    layout: 'dir.tmpl.js'
+  for (const dir of dirs) {
+    yield {
+      layout: 'directory.jsx',
+      url: dir + '/index.html',
+      addToMenu: true,
+      content: dir
+    }
   }
-}
-
-/**
- *
- * @param {string} filePath
- */
-function getFileEntry(filePath) {
-
-}
-
-
-export default async function* () {
-
-  yield* await getDirEntry(ROOT)
-
-
-  // yield {
-  //   url: "/page-1/",
-  //   content: "This is the first page",
-  // };
-  // yield {
-  //   url: "/page-2/",
-  //   content: "This is the second page",
-  // };
-  // yield {
-  //   url: "/page-3/",
-  //   content: "This is the third page",
-  // };
 }
