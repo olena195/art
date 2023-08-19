@@ -3,7 +3,7 @@ export default function* ({get_images}) {
   const dirs = new Set(['/']);
 
   function addDir(filePath) {
-    const pathParts = filePath.split('/').slice(0, -1)
+    const pathParts = filePath.split('/').filter(p => !!p.trim()).slice(0, -1)
     let prevPath = ''
     for (const pathPart of pathParts) {
       prevPath = `${prevPath}/${pathPart}`

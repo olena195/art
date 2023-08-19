@@ -13,6 +13,15 @@ function ImageCard({image}) {
 }
 
 export default function ({nav, page}) {
+    const children = nav.menu(page.data.url).children?.filter(c => c?.data?.image)
 
-    return nav.menu(page.data.url).children.filter(c => c?.data?.image).map(c => <ImageCard key={c.slug} image={c}/>)
+    if (!children?.length) {
+        return <p>У цій папці немає картинок</p>
+    }
+
+    return <div>
+        {
+            children.map(c => <ImageCard key={c.slug} image={c}/>)
+        }
+    </div>
 }
