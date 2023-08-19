@@ -8,7 +8,7 @@ import favicon from "https://raw.githubusercontent.com/lumeland/experimental-plu
 
 const site = lume({
   prettyUrls: false,
-  location: new URL('https://olena195.github.io/art'),//Deno.env.get('BASE_URL') ? new URL(Deno.env.get('BASE_URL')) : undefined,
+  location: Deno.env.get('BASE_URL') ? new URL(Deno.env.get('BASE_URL')) : undefined,
   watcher: {
     ignore: [
       '.vscode',
