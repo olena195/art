@@ -850,7 +850,8 @@
     "https://deno.land/x/lume@v1.18.4/plugins/resolve_urls.ts": "e4da04a9acc2e41805c75985217b301b82f6d66bbfea74a9260906622a24d47e",
     "https://deno.land/x/lume@v1.18.4/plugins/search.ts": "af3ea229915f3580962c9da6be33ca8e639b8444ce8604769968afd731b9dd3c",
     "https://deno.land/x/lume@v1.18.4/plugins/url.ts": "43d3d47896a7322a8dd34572dedb4baa6f73a382594a2ff7c34a3a064dcc6c9e",
-    "https://deno.land/x/lume@v1.18.4/plugins/yaml.ts": "df24aac4098dba258f1ac331a3b16ba488a336eb63c51afed8f59201228d583c"
+    "https://deno.land/x/lume@v1.18.4/plugins/yaml.ts": "df24aac4098dba258f1ac331a3b16ba488a336eb63c51afed8f59201228d583c",
+    "https://raw.githubusercontent.com/lumeland/experimental-plugins/main/favicon/mod.ts": "5c4030e4e210eb94101f99c67e6f3badc05b0583a5d19915d3cb4463bdbb9105"
   },
   "npm": {
     "specifiers": {

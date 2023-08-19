@@ -4,6 +4,7 @@ import picture from "lume/plugins/picture.ts";
 import resolveUrls from "lume/plugins/resolve_urls.ts";
 import jsx from "lume/plugins/jsx.ts";
 import nav from "lume/plugins/nav.ts";
+import favicon from "https://raw.githubusercontent.com/lumeland/experimental-plugins/main/favicon/mod.ts";
 
 const site = lume({
   location: Deno.env.get('BASE_URL') ? new URL(Deno.env.get('BASE_URL')) : undefined,
@@ -20,6 +21,9 @@ site.use(picture());
 site.use(imagick());
 site.use(resolveUrls());
 site.use(nav());
+site.use(favicon({
+  input: '_favicon.png'
+}));
 
 // function to return an array of all images loaded
 site.data("get_images", function () {
