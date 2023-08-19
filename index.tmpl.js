@@ -1,3 +1,5 @@
+export const title = 'Київська Зефірка'
+
 export default function* ({get_images}) {
 
   const dirs = new Set(['/']);
@@ -19,6 +21,7 @@ export default function* ({get_images}) {
 
 
     yield {
+      title: `${image} — ${title}`,
       layout: 'withMenu.jsx',
       image,
       url: image + ".html",
@@ -29,6 +32,7 @@ export default function* ({get_images}) {
 
   for (const dir of dirs) {
     yield {
+      title: dir === '/' ? title : `${dir} — ${title}`,
       layout: 'directory.jsx',
       url: dir.endsWith('/') ? dir : `${dir}/`,
       addToMenu: true,
