@@ -36,7 +36,6 @@ export default function* ({get_images}) {
       layout: 'directory.jsx',
       url: dir.endsWith('/') ? dir : `${dir}/`,
       addToMenu: true,
-      content: dir
     }
   }
 }

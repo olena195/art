@@ -1,13 +1,14 @@
 import lume from "lume/mod.ts";
 import imagick from "lume/plugins/imagick.ts";
 import picture from "lume/plugins/picture.ts";
-import resolveUrls from "lume/plugins/resolve_urls.ts";
+import basePath from "lume/plugins/base_path.ts";
 import jsx from "lume/plugins/jsx.ts";
 import nav from "lume/plugins/nav.ts";
 import favicon from "https://raw.githubusercontent.com/lumeland/experimental-plugins/main/favicon/mod.ts";
 
 const site = lume({
-  location: Deno.env.get('BASE_URL') ? new URL(Deno.env.get('BASE_URL')) : undefined,
+  prettyUrls: false,
+  location: new URL('https://olena195.github.io/art'),//Deno.env.get('BASE_URL') ? new URL(Deno.env.get('BASE_URL')) : undefined,
   watcher: {
     ignore: [
       '.vscode',
@@ -19,7 +20,7 @@ const site = lume({
 site.use(jsx());
 site.use(picture());
 site.use(imagick());
-site.use(resolveUrls());
+site.use(basePath());
 site.use(nav());
 site.use(favicon({
   input: '_favicon.png'

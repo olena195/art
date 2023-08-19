@@ -5,7 +5,6 @@ export default function ({content, title}) {
 <head>
   <meta charset="UTF-8">
   <title>${title}</title>
-  <link rel="stylesheet" href="/components.css" >
 </head>
 <body>
 ${content}
