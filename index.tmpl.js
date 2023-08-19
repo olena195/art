@@ -1,6 +1,6 @@
 export default function* ({ get_images }) {
 
-  const dirs = new Set();
+  const dirs = new Set(['/']);
 
   for (const image of get_images()) {
     const mayBeOptimized = !image.endsWith('.gif')
@@ -20,7 +20,7 @@ export default function* ({ get_images }) {
   for (const dir of dirs) {
     yield {
       layout: 'directory.jsx',
-      url: dir + '/index.html',
+      url: dir.endsWith('/') ? dir : `${dir}/`,
       addToMenu: true,
       content: dir
     }

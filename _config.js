@@ -1,13 +1,12 @@
 import lume from "lume/mod.ts";
 import imagick from "lume/plugins/imagick.ts";
-import {JsxEngine} from "lume/plugins/jsx.ts";
 import picture from "lume/plugins/picture.ts";
 import resolveUrls from "lume/plugins/resolve_urls.ts";
 import jsx from "lume/plugins/jsx.ts";
 import nav from "lume/plugins/nav.ts";
 
 const site = lume({
-  prettyUrls: false, // Disable pretty urls
+  location: Deno.env.get('BASE_URL') ? new URL(Deno.env.get('BASE_URL')) : undefined,
   watcher: {
     ignore: [
       '.vscode',

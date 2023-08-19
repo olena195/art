@@ -73,11 +73,14 @@ jobs:
           path: _cache
           key: images
 
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v3
+
       - name: Build site
         run: deno task build
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v2
+        env:
+          BASE_URL: ${{ steps.pages.outputs.base_url }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
