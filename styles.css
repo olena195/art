@@ -1,0 +1,64 @@
+* {
+  box-sizing: border-box;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+nav.main-nav {
+  & > ul {
+
+    & li {
+      list-style: none;
+    }
+
+    & li:has(a:where([rel="current"],[rel="parent"])) {
+      list-style: disclosure-open;
+    }
+
+    & li:has(> a[rel="current"]), & li:has(> a[rel="parent"]):not(:has(a[rel="current"])) {
+      list-style: disclosure-closed;
+    }
+
+
+    & a {
+      padding: 0.4rem 0.8rem;
+      display: block;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    & a[rel="current"] {
+      font-weight: bold;
+    }
+  }
+}
+
+
+.main-layout-container {
+  display: flex;
+  gap: 3rem;
+  align-items: start;
+
+  & > main {
+    flex: 1
+  }
+}
+
+@media (width <= 600px) {
+  .main-layout-container {
+    width: 200dvw;
+
+    & > nav {
+      flex: 1
+    }
+  }
+}

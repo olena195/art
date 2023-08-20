@@ -6,5 +6,15 @@
   },
   "imports": {
     "lume/": "https://cdn.jsdelivr.net/gh/lumeland/lume@7f755a5a556cd3eca4f0627c417a31edcc34e2a1/"
+  },
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "jsxImportSource": "npm:react",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "dom.asynciterable",
+      "deno.ns"
+    ]
   }
 }

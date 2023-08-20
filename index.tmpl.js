@@ -1,6 +1,6 @@
 export const title = 'Київська Зефірка'
 
-export default function* ({get_images}) {
+export default function* ({get_images, get_raw_content_url}) {
 
   const dirs = new Set(['/']);
 
@@ -26,7 +26,7 @@ export default function* ({get_images}) {
       image,
       url: image + ".html",
       addToMenu: false,
-      content: `<img alt="${image}" src="${image}" ${imagickAttr} />`
+      content: `<a href="${get_raw_content_url(image)}" title="Натисни, щоб відкрити в повному розмірі"><img alt="${image}" src="${image}" ${imagickAttr} /></a>`
     }
   }
 

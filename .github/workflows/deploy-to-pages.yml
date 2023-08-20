@@ -38,6 +38,7 @@ jobs:
         run: deno task build
         env:
           BASE_URL: ${{ steps.pages.outputs.base_url }}
+          RAW_FILE_BASE_URL: https://raw.githubusercontent.com/${{ github.repository }}/${{ github.sha }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
