@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  scrollbar-padding:3rem;
 }
 
 body, html {
@@ -15,6 +16,10 @@ img {
 
 nav.main-nav {
   & > ul {
+
+    background: white;
+    margin: 0;
+    padding-block: 1rem;
 
     & li {
       list-style: none;
@@ -53,12 +58,56 @@ nav.main-nav {
   }
 }
 
-@media (width <= 600px) {
-  .main-layout-container {
-    width: 200dvw;
+.bottom-menu-toggle {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100dvw;
+  height: 2.5rem;
+  font-size: 120%;
+  color: inherit;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid #ccc;
+  text-decoration: none;
+  background: white;
+}
 
-    & > nav {
-      flex: 1
-    }
+@media (width > 600px) {
+  a[href="#manu"] {
+    display: none;
+  }
+
+  .bottom-menu-toggle {
+    display: none;
+  }
+}
+
+@media (width <= 600px) {
+  :where(html, body):has(nav.main-nav:target) {
+    overflow: hidden;
+  }
+
+  main {
+    padding-bottom:5rem;
+  }
+
+  nav.main-nav:not(:target) {
+    display: none;
+  }
+
+  nav.main-nav {
+    background: white;
+    z-index: 20;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 100dvh;
+    overflow: auto;
+    width: 100dvw;
+    padding-top: 50dvh;
+    padding-bottom: 2.5rem;
   }
 }
