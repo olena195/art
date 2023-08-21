@@ -4,32 +4,31 @@
  */
 
 /**
- *
  * @param {MenuItem} item
- * @param {string} currentUrl
+ * @param breadcrumb
  */
 function MenuItem({item, breadcrumb}) {
   const url = item.data.url
-  const rel = breadcrumb.at(-1).data.url === url ? 'current' : breadcrumb.at(-2)?.data.url === url ? 'parent' : ''
+  const rel = breadcrumb.at(-1).data.url === url ? 'current' : breadcrumb.at(-2)?.data?.url === url ? 'parent' : ''
 
-  return item?.data?.addToMenu
-    ? <li>
+  return <li>
       {url ? (<a rel={rel} href={url}>{item.slug}</a>) : <span>{item.slug}</span>}
       <Menu items={item.children} breadcrumb={breadcrumb}/>
     </li>
-    : ''
 
 }
 
 
 /**
- * @param {MenuItem[] | null | undefined} items
- * @param {string} currentUrl
+ *
+ * @param breadcrumb
+ * @param {MenuItem[]} items
  */
 export default function Menu({breadcrumb, items}) {
-  return (Array.isArray(items) && items.length > 0)
+  const itemsToShow = (items || []).filter(item => item?.data?.addToMenu)
+  return (itemsToShow.length)
     ? <ul>
-      {items.map(item => <MenuItem key={item.slug} item={item} breadcrumb={breadcrumb}/>)}
+      {itemsToShow.map(item => <MenuItem key={item.slug} item={item} breadcrumb={breadcrumb}/>)}
     </ul>
     : ''
 }
